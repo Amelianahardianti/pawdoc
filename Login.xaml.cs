@@ -1,63 +1,65 @@
-﻿using System.Text;
+﻿using pawdoc;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-
-namespace pawdoc
+namespace PawDoc
 {
-    public partial class Login : Window
+    public partial class Login : Page
     {
         public Login()
         {
             InitializeComponent();
         }
 
-        // Event handler untuk tombol Login
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        // Event handler  buat tombol Login
+        private async void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             string email = EmailTextBox.Text;
             string password = PasswordTextBox.Text;
 
-            // Validasi sederhana
+            // Validasi  untuk passrod
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Please enter your email and password.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            // Contoh logika login sederhana
-            if (email == "user@example.com" && password == "password123")
-            {
-                MessageBox.Show("Login Successful!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            //  Loading Screen
+            var loadingScreen = new LoadingScreen();
+            NavigationService.Navigate(loadingScreen);
 
-                // Navigasi ke halaman berikutnya (misalnya, dashboard)
-                Dashboard dashboard = new Dashboard(); // Dashboard adalah window lain
-                dashboard.Show();
-                this.Close();
+           
+            bool isLoginSuccessful = await Task.Run(() =>
+            {
+                Thread.Sleep(3000); 
+                return email == "user@example.com" && password == "password123";
+            });
+
+            if (isLoginSuccessful)
+            {
+                // Navigasi ke halaman dashboard
+                MessageBox.Show("Login Successful!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                NavigationService.Navigate(new Dashboard());
             }
             else
             {
                 MessageBox.Show("Invalid email or password. Please try again.", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                // Kembali ke halaman login
+                NavigationService.Navigate(new Login());
             }
         }
 
-        // Event handler untuk link Sign Up
+        // Event handler buat link Sign Up
         private void SignUpLink_Click(object sender, RoutedEventArgs e)
         {
-            // Navigasi ke halaman registrasi
-            Register register = new Register(); // Register adalah window lain
-            register.Show();
-            this.Close();
+            // Navigasi untuk ke halaman registrasi
+            NavigationService.Navigate(new Register());
         }
 
-        // Event handler untuk link Forgot Password
+        // untuk link Forgot Password amjay
         private void ForgotPasswordLink_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Forgot Password feature is not yet implemented.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);

@@ -1,4 +1,4 @@
-﻿<Window x:Class="pawdoc.Login"
+﻿<Page x:Class="pawdoc.Login"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="PawDoc Login" Height="450" Width="800" Background="#FBF8EF">
@@ -11,7 +11,7 @@
 
         <!-- Kolom Kiri: Gambar Anjing dan Kucing -->
         <Border Background="#FFE6AF83" Grid.Column="0">
-            <Image Source="Assets/dog_cat.png" Stretch="Uniform" VerticalAlignment="Center" />
+            <Image Source="Assets/anjingkucing.svg" Stretch="Uniform" VerticalAlignment="Center" />
         </Border>
 
         <!-- Kolom Kanan: Form Login -->
@@ -50,4 +50,4 @@
             </StackPanel>
         </Grid>
     </Grid>
-</Window>
+</Page>
