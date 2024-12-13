@@ -9,7 +9,41 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\anjingkucing.svg" />
+    <None Remove="Assets\facebook.svg" />
+    <None Remove="Assets\google.png" />
+    <None Remove="Assets\google.svg" />
+    <None Remove="Assets\x.svg" />
+    <None Remove="facebook.svg" />
+    <None Remove="google.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\anjingkucing.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Assets\google.png" />
+    <Content Include="Assets\google.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\x.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignColors" Version="3.1.0" />
+    <PackageReference Include="MaterialDesignThemes" Version="5.1.0" />
+    <PackageReference Include="SharpVectors" Version="1.8.4.2" />
     <PackageReference Include="Svg2Xaml" Version="0.3.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\facebook.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="component\" />
   </ItemGroup>
 
 </Project>

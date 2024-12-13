@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace PawDoc
+namespace pawdoc
 {
     public partial class Login : Page
     {
@@ -56,13 +56,23 @@ namespace PawDoc
         private void SignUpLink_Click(object sender, RoutedEventArgs e)
         {
             // Navigasi untuk ke halaman registrasi
-            NavigationService.Navigate(new Register());
+            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new Register());
         }
 
         // untuk link Forgot Password amjay
         private void ForgotPasswordLink_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Forgot Password feature is not yet implemented.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PasswordTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
