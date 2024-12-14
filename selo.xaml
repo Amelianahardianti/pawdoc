@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:pawdoc"
         mc:Ignorable="d"
-        Title="selo" Height="450" Width="800">
+        Title="pawdoc" Height="450" Width="800">
     <Grid>
         <Frame Grid.Column="1" x:Name="ContentFrame" NavigationUIVisibility="Hidden"></Frame>
     </Grid>

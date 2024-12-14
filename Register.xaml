@@ -11,7 +11,7 @@
 
         <!-- Kolom Kiri: Gambar Anjing dan Kucing -->
         <Border Background="#FFE6AF83" Grid.Column="0">
-            <Image Source="Assets/loginpawdoc-removebg-preview 1.png" Stretch="Uniform" VerticalAlignment="Center" />
+            <Image Margin="0,200,0,0" Source="Assets\anjingkucing.svg"/>
         </Border>
 
         <!-- Kolom Kanan: Form Register -->
