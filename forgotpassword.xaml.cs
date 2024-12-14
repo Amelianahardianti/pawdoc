@@ -25,9 +25,11 @@ namespace pawdoc
             InitializeComponent();
         }
 
-        private void SendButton_Click(object sender, RoutedEventArgs e)
+        private async void SendButton_Click(object sender, RoutedEventArgs e)
         {
-
+            string email = EmailTextBox.Text;
+            var authContext = ((selo)Application.Current.MainWindow).FirebaseAuth;
+            await authContext.ForgotPassword(email);
         }
     }
 }

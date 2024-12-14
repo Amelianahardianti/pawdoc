@@ -65,5 +65,11 @@ namespace pawdoc
         {
 
         }
+
+        private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new ForgotPassword());
+
+        }
     }
 }

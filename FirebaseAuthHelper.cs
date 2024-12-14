@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace pawdoc
 {
@@ -45,6 +46,19 @@ namespace pawdoc
             {
                 Console.WriteLine($"Error: {ex.Message}");
                 return null;
+            }
+        }
+
+        public async Task ForgotPassword(string email)
+        {
+            try
+            {
+                await authProvider.SendPasswordResetEmailAsync(email);
+                MessageBox.Show("Email has been sent");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No Email Found");
             }
         }
 

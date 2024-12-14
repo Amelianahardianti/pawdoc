@@ -32,9 +32,8 @@
                          Background="#FFF5F5F5" BorderBrush="#FFC6C6C6" BorderThickness="1" TextChanged="PasswordTextBox_TextChanged" />
 
                 <!-- Link Lupa Password -->
-                <TextBlock Text="Forgot Your Password?" Foreground="#FFB45F50" FontSize="12"
-                           HorizontalAlignment="Right" Margin="0,5,0,0" Cursor="Hand" />
-
+                <Button Content="Forgot Password" Foreground="#FFFB4F56" Cursor="Hand" Background="Transparent" BorderBrush="Transparent" FontSize="14"
+                Padding="0" HorizontalAlignment="Left" VerticalAlignment="Center" Click="HyperlinkButton_Click"/>
                 <!-- Tombol Login -->
                 <Button Content="Login" Height="40" Margin="0,20,0,0" Background="#FFB45F50" Foreground="White"
                         FontSize="16" FontWeight="Bold" BorderThickness="0" Cursor="Hand" Click="LoginButton_Click" />
