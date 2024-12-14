@@ -1,4 +1,5 @@
-﻿using System;
+﻿using pawdoc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +18,16 @@ namespace pawdoc
     /// <summary>
     /// Interaction logic for forgotpassword.xaml
     /// </summary>
-    public partial class forgotpassword : Window
+    public partial class ForgotPassword : Page
     {
-        public forgotpassword()
+        public ForgotPassword()
         {
             InitializeComponent();
+        }
+
+        private void SendButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

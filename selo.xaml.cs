@@ -17,8 +17,12 @@ namespace pawdoc
     /// <summary>
     /// Interaction logic for selo.xaml
     /// </summary>
+    /// 
+
     public partial class selo : Window
     {
+        public FirebaseAuthHelper FirebaseAuth = new FirebaseAuthHelper();
+
         public selo()
         {
 

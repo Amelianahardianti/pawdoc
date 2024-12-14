@@ -19,7 +19,8 @@ namespace pawdoc
         {
             string email = EmailTextBox.Text;
             string password = PasswordTextBox.Text;
-
+            var authContext = ((selo)Application.Current.MainWindow).FirebaseAuth;
+            var auth = await authContext.SignInWithEmailPasswordAsync(email, password);
             // Validasi  untuk passrod
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
@@ -31,25 +32,15 @@ namespace pawdoc
             var loadingScreen = new LoadingScreen();
             NavigationService.Navigate(loadingScreen);
 
-           
-            bool isLoginSuccessful = await Task.Run(() =>
+            if(auth != null)
             {
-                Thread.Sleep(3000); 
-                return email == "user@example.com" && password == "password123";
-            });
+                ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new DashboardPage());
+            } else
+            {
+                MessageBox.Show("Login Failed");
+            }
 
-            if (isLoginSuccessful)
-            {
-                // Navigasi ke halaman dashboard
-                MessageBox.Show("Login Successful!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                NavigationService.Navigate(new Dashboard());
-            }
-            else
-            {
-                MessageBox.Show("Invalid email or password. Please try again.", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
-                // Kembali ke halaman login
-                NavigationService.Navigate(new Login());
-            }
+
         }
 
         // Event handler buat link Sign Up
