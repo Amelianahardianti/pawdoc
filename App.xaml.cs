@@ -1,40 +1,53 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Configuration;
+﻿using System;
 using System.Windows;
-using Firebase.Database;
-using Firebase.Database.Query;
-using Firebase.Auth;
-
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Google.Cloud.Firestore; // Library Firestore
+using System.IO;
+using pawdoc;
 
 namespace pawdoc
 {
     public partial class App : Application
     {
         private readonly IHost _host;
+
         public App()
         {
-            // Inisialisasi Host untuk dependency injection
-            //_host = Host.CreateDefaultBuilder()
-                //.ConfigureServices((context, services) =>
-                //{
+            // Set environment variable untuk file Service Account Key Firebase
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "pawdoc-12345-firebase-adminsdk-u5zgj-2ae4b4ce7c.json");
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+            Console.WriteLine($"Service Account Key Path: {path}"); // Debug path
 
-                //    String firebaseApiKey = context.Configuration.GetValue<String>("FIREBASE_API_KEY");
-                //    // Daftarkan layanan atau halaman yang digunakan
-                //    services.AddSingleton<selo>();
-                //})
-                //.Build();
+
+            // Inisialisasi Host untuk Dependency Injection (opsional, jika digunakan)
+            _host = Host.CreateDefaultBuilder()
+                .ConfigureServices((context, services) =>
+                {
+                    // Contoh: Daftarkan layanan yang akan digunakan
+                    services.AddSingleton<FirestoreService>(); // Tambahkan layanan Firestore
+                    services.AddSingleton<selo>(); // Tambahkan halaman utama
+                })
+                .Build();
         }
 
-        protected override void OnStartup(StartupEventArgs e)
+        protected override async void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 
-            // Ambil instance MainWindow dan tampilkan
-            // var mainWindow = _host.Services.GetRequiredService<selo>();
-            var mainWindow = new selo();
+            // Pastikan layanan Dependency Injection siap
+            await _host.StartAsync();
+
+            // Ambil instance MainWindow atau layanan utama
+            var mainWindow = _host.Services.GetRequiredService<selo>();
             mainWindow.Show();
+        }
+
+        protected override async void OnExit(ExitEventArgs e)
+        {
+            // Pastikan host di-shutdown dengan baik
+            await _host.StopAsync();
+            base.OnExit(e);
         }
     }
 }
-

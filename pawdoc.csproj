@@ -9,22 +9,36 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="appsettings.json" />
     <None Remove="Assets\anjingkucing.svg" />
     <None Remove="Assets\facebook.svg" />
     <None Remove="Assets\google.png" />
     <None Remove="Assets\google.svg" />
+    <None Remove="Assets\Group 50.png" />
+    <None Remove="Assets\Group 53.png" />
+    <None Remove="Assets\Group 54.png" />
+    <None Remove="Assets\owner.png" />
+    <None Remove="Assets\pawdoc-12345-firebase-adminsdk-u5zgj-2ae4b4ce7c.json" />
+    <None Remove="Assets\User Profile Circle.png" />
+    <None Remove="Assets\vet.png" />
     <None Remove="Assets\x.svg" />
     <None Remove="facebook.svg" />
     <None Remove="google.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Assets\anjingkucing.svg">
+    <Resource Include="Assets\anjingkucing.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\google.png" />
+    <Content Include="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Assets\google.png" />
     <Content Include="Assets\google.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\pawdoc-12345-firebase-adminsdk-u5zgj-2ae4b4ce7c.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\x.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -32,9 +46,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Group 50.png" />
+    <Resource Include="Assets\Group 53.png" />
+    <Resource Include="Assets\Group 54.png" />
+    <Resource Include="Assets\owner.png" />
+    <Resource Include="Assets\User Profile Circle.png" />
+    <Resource Include="Assets\vet.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Firebase.Auth" Version="1.0.0" />
     <PackageReference Include="Firebase.Database" Version="1.0.0" />
     <PackageReference Include="FirebaseDatabase.net" Version="4.2.0" />
+    <PackageReference Include="Google.Cloud.Firestore" Version="3.9.0" />
+    <PackageReference Include="Google.Cloud.Firestore.V1" Version="3.9.0" />
     <PackageReference Include="MaterialDesignColors" Version="3.1.0" />
     <PackageReference Include="MaterialDesignThemes" Version="5.1.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.0" />
@@ -52,12 +77,6 @@
 
   <ItemGroup>
     <Folder Include="component\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="appsettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>

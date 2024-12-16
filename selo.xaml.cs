@@ -1,34 +1,46 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Windows.Navigation;
 
 namespace pawdoc
 {
     /// <summary>
     /// Interaction logic for selo.xaml
     /// </summary>
-    /// 
-
     public partial class selo : Window
     {
-        public FirebaseAuthHelper FirebaseAuth = new FirebaseAuthHelper();
+        // Properti FirebaseAuthHelper publik agar bisa diakses dari file lain
+        public FirebaseAuthHelper FirebaseAuth { get; set; }
 
-        public selo()
+        // Constructor Default
+        public selo() : this(new FirebaseAuthHelper()) // Inisialisasi default FirebaseAuthHelper
         {
+        }
 
-       
+        // Constructor dengan Parameter
+        public selo(FirebaseAuthHelper firebaseAuthHelper)
+        {
             InitializeComponent();
-            ContentFrame.Navigate(new Login());
+
+            // Inisialisasi properti FirebaseAuth
+            FirebaseAuth = firebaseAuthHelper;
+
+            // Navigasi ke halaman Login.xaml
+            try
+            {
+                ContentFrame.Navigate(new Login());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error navigating to Login page: {ex.Message}");
+            }
+        }
+
+        // Event handler jika navigasi gagal
+        private void ContentFrame_NavigationFailed(object sender, NavigationFailedEventArgs e)
+        {
+            MessageBox.Show($"Navigation Failed: {e.Exception.Message}");
+            e.Handled = true;
         }
     }
 }

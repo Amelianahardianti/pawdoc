@@ -27,11 +27,6 @@ namespace pawdoc
                 MessageBox.Show("Please enter your email and password.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-
-            //  Loading Screen
-            var loadingScreen = new LoadingScreen();
-            NavigationService.Navigate(loadingScreen);
-
             if(auth != null)
             {
                 ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new DashboardPage());

@@ -31,5 +31,14 @@ namespace pawdoc
             var authContext = ((selo)Application.Current.MainWindow).FirebaseAuth;
             await authContext.ForgotPassword(email);
         }
+
+        private void HyperlinkBack_Click(object sender, RoutedEventArgs e)
+        {
+            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new Login());
+        }
+
+       
+        
+
     }
 }
