@@ -1,0 +1,68 @@
+﻿<Page x:Class="pawdoc.SetUpProfileVet"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="SetUpProfileVet" Height="450" Width="800"
+      Background="#FDFBF6">
+
+    <!-- Main Centered Grid -->
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FDFBF6" Height="400">
+        <Border Background="White" CornerRadius="5" Width="700" Margin="20,-26,20,-20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Title -->
+                <TextBlock Text="Set Up Vet Profile" FontSize="20" FontWeight="Bold" Foreground="#D98A50"
+                           HorizontalAlignment="Center" Margin="0,20,0,10"/>
+
+                <!-- Content -->
+                <Grid Grid.Row="1" Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="2.5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Profile Picture Section -->
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0">
+                        <TextBlock Text="Photo Profile" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center"/>
+                        <Grid Width="120" Height="120">
+                            <Ellipse Width="120" Height="120" Fill="LightGray"/>
+                            <Image x:Name="ProfileImage" Source="{Binding ProfileImagePath}" Stretch="UniformToFill"
+                                   Width="120" Height="120" ClipToBounds="True"/>
+                            <!-- Add Button -->
+                            <Button Content="+" Width="25" Height="25" Background="#D98A50" Foreground="White"
+                                    FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                                    Click="AddProfileImage_Click" ToolTip="Add Profile Image"/>
+                        </Grid>
+                    </StackPanel>
+
+                    <!-- Input Fields -->
+                    <StackPanel Grid.Column="1" Margin="40,0,0,0" VerticalAlignment="Top">
+                        <TextBlock Text="Name" FontWeight="Bold" Margin="0,10,0,2"/>
+                        <TextBox x:Name="NameInput" Height="30" Background="#F5F5F5"/>
+
+                        <TextBlock Text="Specialization" FontWeight="Bold" Margin="0,10,0,2"/>
+                        <TextBox x:Name="SpecializationInput" Height="30" Background="#F5F5F5"/>
+
+                        <TextBlock Text="IDH Number" FontWeight="Bold" Margin="0,10,0,2"/>
+                        <TextBox x:Name="IDHNumberInput" Height="30" Background="#F5F5F5"/>
+
+                        <TextBlock Text="Clinic Information" FontWeight="Bold" Margin="0,10,0,2"/>
+                        <TextBox x:Name="ClinicInfoInput" Height="60" TextWrapping="Wrap" AcceptsReturn="True"
+                                 Background="#F5F5F5"/>
+
+                        <TextBlock Text="City" FontWeight="Bold" Margin="0,10,0,2"/>
+                        <TextBox x:Name="CityInput" Height="30" Background="#F5F5F5"/>
+
+                        <!-- Save Button -->
+                        <Button Content="Save" Width="80" Height="30" Margin="0,20,0,0" HorizontalAlignment="Left"
+                                Background="#D98A50" Foreground="White" FontWeight="Bold"
+                                Click="SaveButton_Click"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>
