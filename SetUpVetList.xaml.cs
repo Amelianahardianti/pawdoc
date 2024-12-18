@@ -16,17 +16,13 @@ using System.Windows.Shapes;
 namespace pawdoc
 {
     /// <summary>
-    /// Interaction logic for rule.xaml
+    /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class role : Page
+    public partial class SetUpVetList : Page
     {
-        public role()
+        public SetUpVetList()
         {
             InitializeComponent();
         }
-
-        
     }
 }
-    
-

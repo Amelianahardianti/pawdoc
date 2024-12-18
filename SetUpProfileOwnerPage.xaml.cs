@@ -50,38 +50,40 @@ namespace pawdoc
                 return;
             }
 
+            //[BIAR GA ERROR DI GW]
+
             // Save data to the database
-            try
-            {
-                using (SqlConnection connection = new SqlConnection("Data Source=YOUR_SERVER_NAME;Initial Catalog=YOUR_DATABASE_NAME;Integrated Security=True"))
-                {
-                    connection.Open();
-
-                    // SQL command to insert data
-                    string query = "INSERT INTO Profile (Name, Address, City, PostCode, Country, ProfileImagePath) VALUES (@Name, @Address, @City, @PostCode, @Country, @ProfileImagePath)";
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        // Add parameters to avoid SQL injection
-                        command.Parameters.AddWithValue("@Name", name);
-                        command.Parameters.AddWithValue("@Address", address);
-                        command.Parameters.AddWithValue("@City", city);
-                        command.Parameters.AddWithValue("@PostCode", postcode);
-                        command.Parameters.AddWithValue("@Country", country);
-                        command.Parameters.AddWithValue("@ProfileImagePath", ProfileImagePath ?? (object)DBNull.Value);
-
-                        command.ExecuteNonQuery();
-                    }
-                }
-
-                MessageBox.Show("Profile saved successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-
-                // Clear the form
-                ClearForm();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error saving data: {ex.Message}", "Database Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            //try
+            //{
+            //    using (SqlConnection connection = new SqlConnection("Data Source=YOUR_SERVER_NAME;Initial Catalog=YOUR_DATABASE_NAME;Integrated Security=True"))
+            //    {
+            //        connection.Open();
+            //
+            //        // SQL command to insert data
+            //        string query = "INSERT INTO Profile (Name, Address, City, PostCode, Country, ProfileImagePath) VALUES (@Name, @Address, @City, @PostCode, @Country, @ProfileImagePath)";
+            //        using (SqlCommand command = new SqlCommand(query, connection))
+            //        {
+            //            // Add parameters to avoid SQL injection
+            //            command.Parameters.AddWithValue("@Name", name);
+            //            command.Parameters.AddWithValue("@Address", address);
+            //            command.Parameters.AddWithValue("@City", city);
+            //            command.Parameters.AddWithValue("@PostCode", postcode);
+            //            command.Parameters.AddWithValue("@Country", country);
+            //            command.Parameters.AddWithValue("@ProfileImagePath", ProfileImagePath ?? (object)DBNull.Value);
+            //
+            //            command.ExecuteNonQuery();
+            //        }
+            //    }
+            //
+            //    MessageBox.Show("Profile saved successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            //
+            //    // Clear the form
+            //    ClearForm();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show($"Error saving data: {ex.Message}", "Database Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
         }
 
         // Helper method to clear input fields

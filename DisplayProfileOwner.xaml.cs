@@ -16,14 +16,15 @@ using System.Windows.Shapes;
 namespace pawdoc
 {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Interaction logic for DisplayrofileOwner.xaml
     /// </summary>
-    public partial class VetListPage : Page
+    public partial class DisplayProfileOwner : Page
     {
-        public VetListPage()
+        public DisplayProfileOwner()
         {
             InitializeComponent();
         }
+        
         // Navigation Button Click Handler
         private void PawDocButton_Click(object sender, RoutedEventArgs e)
         {
@@ -53,7 +54,6 @@ namespace pawdoc
             // Navigasi ke halaman Display Pet Diary 
             ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new DisplayProfileOwner());
         }
-
         // [DIBIKIN BISA OTOMATIS BIKIN PROFILE (SetUpProfileOwnerPage)OR LIHAT PROFILE (DisplayProfileOwnerPage)]
 
         //private async void ProfileButton_Click(object sender, RoutedEventArgs e)
