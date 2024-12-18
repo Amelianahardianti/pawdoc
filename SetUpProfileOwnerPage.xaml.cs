@@ -1,19 +1,25 @@
 ﻿using System;
-using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
-using Microsoft.Win32; // For OpenFileDialog
+using Microsoft.Win32;
 using System.Windows.Media.Imaging;
+using Firebase.Database;
+using Firebase.Database.Query;
+using System.Threading.Tasks;
 
 namespace pawdoc
 {
     public partial class SetUpProfileOwnerPage : Page
     {
         public string ProfileImagePath { get; set; } // Holds the image file path
+        private readonly FirebaseClient firebaseClient;
 
         public SetUpProfileOwnerPage()
         {
             InitializeComponent();
+
+            // Initialize Firebase client
+            firebaseClient = new FirebaseClient("https://pawdoc-12345-default-rtdb.asia-southeast1.firebasedatabase.app/"); // Replace with your Firebase URL
         }
 
         // Event handler for adding a profile image
@@ -34,8 +40,8 @@ namespace pawdoc
             }
         }
 
-        // Event handler for saving data to the database
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        // Event handler for saving data to Firebase
+        private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             // Retrieve user input values
             string name = NameInput.Text;
@@ -50,40 +56,33 @@ namespace pawdoc
                 return;
             }
 
-            //[BIAR GA ERROR DI GW]
+            // Create a profile object to save
+            var profileData = new
+            {
+                Name = name,
+                Address = address,
+                City = city,
+                PostCode = postcode,
+                Country = country,
+                ProfileImagePath = ProfileImagePath ?? "No Image"
+            };
 
-            // Save data to the database
-            //try
-            //{
-            //    using (SqlConnection connection = new SqlConnection("Data Source=YOUR_SERVER_NAME;Initial Catalog=YOUR_DATABASE_NAME;Integrated Security=True"))
-            //    {
-            //        connection.Open();
-            //
-            //        // SQL command to insert data
-            //        string query = "INSERT INTO Profile (Name, Address, City, PostCode, Country, ProfileImagePath) VALUES (@Name, @Address, @City, @PostCode, @Country, @ProfileImagePath)";
-            //        using (SqlCommand command = new SqlCommand(query, connection))
-            //        {
-            //            // Add parameters to avoid SQL injection
-            //            command.Parameters.AddWithValue("@Name", name);
-            //            command.Parameters.AddWithValue("@Address", address);
-            //            command.Parameters.AddWithValue("@City", city);
-            //            command.Parameters.AddWithValue("@PostCode", postcode);
-            //            command.Parameters.AddWithValue("@Country", country);
-            //            command.Parameters.AddWithValue("@ProfileImagePath", ProfileImagePath ?? (object)DBNull.Value);
-            //
-            //            command.ExecuteNonQuery();
-            //        }
-            //    }
-            //
-            //    MessageBox.Show("Profile saved successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-            //
-            //    // Clear the form
-            //    ClearForm();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show($"Error saving data: {ex.Message}", "Database Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            //}
+            try
+            {
+                // Save data to Firebase Realtime Database
+                await firebaseClient
+                    .Child("Profiles") // Parent node in the database
+                    .PostAsync(profileData);
+
+                MessageBox.Show("Profile saved successfully to Firebase!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                // Clear the form
+                ClearForm();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving data to Firebase: {ex.Message}", "Firebase Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Helper method to clear input fields
