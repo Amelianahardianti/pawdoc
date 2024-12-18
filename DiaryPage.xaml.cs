@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using pawdoc.Class;
 
 namespace pawdoc
 {
@@ -57,8 +58,8 @@ namespace pawdoc
         {
             string symptoms = SymptompsTextBox.Text.Trim();
             string diagnosis = DiagnosisTextBox.Text.Trim();
-            string medicine = MedicinieBox.Text.Trim();
-            string extraNote = ExtraNoteBox.Text.Trim();
+            string medicine = MedicinieBox.Password.Trim();
+            string extraNote = ExtraNoteBox.Password.Trim();
             
             // Validasi Input
             if (string.IsNullOrEmpty(symptoms) || string.IsNullOrEmpty(diagnosis) ||
@@ -71,18 +72,18 @@ namespace pawdoc
             try
             {
                 // Save diary entry to Firestore 
-                var firestoreService = new FirestoreService;
+                var firestoreService = new FirestoreService();
                 var diaryEntry = new DiaryEntry
                 {
-                    Id = Guid.NewGuid().ToString, // Generate unique ID
+                    Id = Guid.NewGuid().ToString(), // Generate unique ID
                     Symptoms = symptoms,
                     Diagnosis = diagnosis,
                     Medicine = medicine,
                     ExtraNote = extraNote,
-                    DateCreated = DateTime.Now
+                    DateCreated = DateTime.Now,
                 };
 
-                await firestoreService.AddDiaryEntryAsync(diaryEntry);
+                firestoreService.AddDiaryEntryAsync(diaryEntry);
 
                 MessageBox.Show("Diary entry saved successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
@@ -91,6 +92,16 @@ namespace pawdoc
             {
                 MessageBox.Show($"Error saving diary entry: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void MessageButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

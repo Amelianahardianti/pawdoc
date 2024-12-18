@@ -11,10 +11,14 @@ namespace pawdoc
     {
         // Properti FirebaseAuthHelper publik agar bisa diakses dari file lain
         public FirebaseAuthHelper FirebaseAuth { get; set; }
+        public FirestoreService FirestoreService { get; set; }
+
+        public User? user = null;
 
         // Constructor Default
         public selo() : this(new FirebaseAuthHelper()) // Inisialisasi default FirebaseAuthHelper
         {
+            
         }
 
         // Constructor dengan Parameter
@@ -24,7 +28,7 @@ namespace pawdoc
 
             // Inisialisasi properti FirebaseAuth
             FirebaseAuth = firebaseAuthHelper;
-
+            this.FirestoreService = new FirestoreService();
             // Navigasi ke halaman Login.xaml
             try
             {

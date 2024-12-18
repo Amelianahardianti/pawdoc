@@ -9,9 +9,11 @@ namespace pawdoc
 {
     public partial class Login : Page
     {
+        public FirestoreService FirestoreService { get; set; }
         public Login()
         {
             InitializeComponent();
+            this.FirestoreService = ((selo)Application.Current.MainWindow).FirestoreService;
         }
 
         // Event handler  buat tombol Login
@@ -29,8 +31,17 @@ namespace pawdoc
             }
             if(auth != null)
             {
-                ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new DashboardPage());
-            } else
+                try
+                {
+                    ((selo)Application.Current.MainWindow).user = await FirestoreService.GetUserFromFirestoreAsync(email);
+                    ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new DashboardPage(((selo)Application.Current.MainWindow).user));
+
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+            else
             {
                 MessageBox.Show("Login Failed");
             }

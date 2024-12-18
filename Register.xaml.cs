@@ -14,7 +14,7 @@ namespace pawdoc
         {
             InitializeComponent();
             // Buat instance FirestoreService
-            FirestoreService firestoreService = new FirestoreService();
+             this._firestoreService = ((selo)Application.Current.MainWindow).FirestoreService;
 
         }
 
@@ -39,6 +39,7 @@ namespace pawdoc
             string password = PasswordBox.Password.Trim();
             string confirmPassword = ConfirmPasswordBox.Password.Trim();
             string selectedRole = ((ComboBoxItem)RoleComboBox.SelectedItem)?.Content?.ToString();
+            
 
             // Validasi Input
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(email) ||
@@ -80,12 +81,12 @@ namespace pawdoc
                         Role = roleEnum
                     };
 
-                    await _firestoreService.AddUserToFirestoreAsync(newUser);
+                    _firestoreService.AddUserToFirestoreAsync(newUser);
 
                     MessageBox.Show("Registration successful!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     // Navigasi ke DashboardPage
-                    ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new DashboardPage());
+                    ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new DashboardPage(newUser));
                 }
                 else
                 {

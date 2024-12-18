@@ -18,11 +18,36 @@ namespace pawdoc
     /// <summary>
     /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class VetListPage : Page
     {
-        public Page1()
+        public VetListPage()
         {
             InitializeComponent();
+        }
+
+        private void MyPetsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void VetListButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MessageButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ProfileButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PawDocButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new DashboardPage(((selo)Application.Current.MainWindow).user));
         }
     }
 }

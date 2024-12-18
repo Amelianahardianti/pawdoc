@@ -1,4 +1,5 @@
 ﻿using Google.Cloud.Firestore;
+using pawdoc.Class;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
@@ -35,7 +36,7 @@ namespace pawdoc
         }
 
         // Menambahkan user baru ke Firestore
-        public async Task AddUserToFirestoreAsync(User user)
+        public async void AddUserToFirestoreAsync(User user)
         {
             try
             {
@@ -46,11 +47,11 @@ namespace pawdoc
                 CollectionReference usersCollection = _firestoreDb.Collection("users");
 
                 // Buat dokumen dengan ID unik
-                DocumentReference docRef = usersCollection.Document(user.Username); // Username dijadikan ID dokumen
+                DocumentReference docRef = usersCollection.Document(user.Email); // Username dijadikan ID dokumen
 
                 // Tambahkan data user
                 await docRef.SetAsync(user);
-                Console.WriteLine($"User {user.Username} berhasil ditambahkan ke Firestore.");
+                MessageBox.Show($"User {user.Username} berhasil ditambahkan ke Firestore.");
                 MessageBox.Show($"User {user.Username} berhasil disimpan!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
@@ -60,27 +61,38 @@ namespace pawdoc
             }
         }
 
-        // Mendapatkan user dari Firestore berdasarkan username
-        public async Task<User> GetUserFromFirestoreAsync(string username)
+        public async void AddDiaryEntryAsync(DiaryEntry diaryEntry)
         {
             try
             {
-                if (string.IsNullOrEmpty(username))
-                    throw new ArgumentException("Username tidak boleh kosong.", nameof(username));
+
+            } catch (Exception ex)
+            {
+                MessageBox.Show("Gagal saat memasukkan diary ke user");
+            }
+        }
+
+        // Mendapatkan user dari Firestore berdasarkan username
+        public async Task<User> GetUserFromFirestoreAsync(string email)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(email))
+                    throw new ArgumentException("Username tidak boleh kosong.", nameof(email));
 
                 // Akses koleksi Firestore dan dokumen
-                DocumentReference docRef = _firestoreDb.Collection("users").Document(username);
+                DocumentReference docRef = _firestoreDb.Collection("users").Document(email);
                 DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
 
                 if (snapshot.Exists)
                 {
                     User user = snapshot.ConvertTo<User>();
-                    Console.WriteLine($"Data ditemukan: {user.Username}, Email: {user.Email}, Role: {user.Role}");
+                    MessageBox.Show($"Data ditemukan: {user.Username}, Email: {user.Email}, Role: {user.Role}");
                     return user;
                 }
                 else
                 {
-                    Console.WriteLine($"User dengan username '{username}' tidak ditemukan.");
+                    Console.WriteLine($"User dengan email '{email}' tidak ditemukan.");
                     return null;
                 }
             }
@@ -91,5 +103,7 @@ namespace pawdoc
                 return null;
             }
         }
+
+       
     }
 }
