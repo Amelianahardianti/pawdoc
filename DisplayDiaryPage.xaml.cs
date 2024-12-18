@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Cloud.Firestore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,14 +17,15 @@ using System.Windows.Shapes;
 namespace pawdoc
 {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Interaction logic for DisplayDiaryPage.xaml
     /// </summary>
-    public partial class VetListPage : Page
+    public partial class DisplayDiaryPage : Page
     {
-        public VetListPage()
+        public DisplayDiaryPage()
         {
             InitializeComponent();
         }
+
         // Navigation Button Click Handler
         private void PawDocButton_Click(object sender, RoutedEventArgs e)
         {
@@ -46,14 +48,12 @@ namespace pawdoc
             // Navigasi kembali ke halaman sebelumnya
             NavigationService.GoBack();
         }
-
         //error dikit bro di xamlnya jadi gw bikinin ini dulu 
         private void ProfileButton_Click(object sender, RoutedEventArgs e)
         {
             // Navigasi ke halaman Display Pet Diary 
             ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new DisplayProfileOwner());
         }
-
         // [DIBIKIN BISA OTOMATIS BIKIN PROFILE (SetUpProfileOwnerPage)OR LIHAT PROFILE (DisplayProfileOwnerPage)]
 
         //private async void ProfileButton_Click(object sender, RoutedEventArgs e)

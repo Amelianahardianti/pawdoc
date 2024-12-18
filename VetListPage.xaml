@@ -22,21 +22,15 @@
 
                 <!-- Navigation Menu -->
                 <StackPanel>
-                    <Button Content="My Pets" FontSize="14" Foreground="#F2994A" FontWeight="Bold"
-                            Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" Click="MyPetsButton_Click"/>
-                    <Button Content="Vet List" FontSize="14" Foreground="#F2994A" FontWeight="Bold"
-                            Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" Click="VetListButton_Click"/>
-                    <Button Content="Message" FontSize="14" Foreground="#F2994A" FontWeight="Bold"
-                            Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" Click="MessageButton_Click"/>
-                    <Button Content="Profile" FontSize="14" Foreground="#F2994A" FontWeight="Bold"
-                            Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" Click="ProfileButton_Click"/>
+                    <Button Content="Vet List" FontSize="14" Foreground="#F2994A" FontWeight="Bold" Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" Click="VetListButton_Click"/>
+                    <Button Content="Pet Diary" FontSize="14" Foreground="#F2994A" FontWeight="Bold" Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" Click="PetDiaryButton_Click"/>
+                    <Button Content="Profile" FontSize="14" Foreground="#F2994A" FontWeight="Bold" Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" Click="ProfileButton_Click"/>
                 </StackPanel>
             </StackPanel>
         </Grid>
 
 
-        <!-- Back Button -->
-        <!--
+        <!-- Back Button INI BLM DIISI DI GW ERROR
         <Button Content="Back" Width="80" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,20"
                 Background="#FEC78F" Foreground="White" BorderBrush="Transparent" Click="BackButton_Click"/>
         <Button Background="White" HorizontalAlignment="Left" Margin="250,71,0,0" VerticalAlignment="Top" Height="70" Width="220" Click="Doctor1_Click"/>
@@ -45,7 +39,6 @@
         <Button Background="White" HorizontalAlignment="Left" Margin="525,175,0,0" VerticalAlignment="Top" Height="70" Width="220" Click="Doctor4_Click"/>
         <Button Background="White" HorizontalAlignment="Left" Margin="250,279,0,0" VerticalAlignment="Top" Height="70" Width="220" Click="Doctor5_Click"/>
         <Button Background="White" HorizontalAlignment="Left" Margin="525,279,0,0" VerticalAlignment="Top" Height="70" Width="220" Click="Doctor6_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="335,197,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        -->
+        <TextBlock HorizontalAlignment="Left" Margin="335,197,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/> -->
     </Grid>
 </Page>

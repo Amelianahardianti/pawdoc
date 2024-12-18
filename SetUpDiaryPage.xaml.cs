@@ -16,21 +16,22 @@ using System.Windows.Shapes;
 namespace pawdoc
 {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Interaction logic for SetUpDiaryPage.xaml
     /// </summary>
-    public partial class VetListPage : Page
+    public partial class SetUpDiaryPage : Page
     {
-        public VetListPage()
+        public SetUpDiaryPage()
         {
             InitializeComponent();
         }
+
         // Navigation Button Click Handler
         private void PawDocButton_Click(object sender, RoutedEventArgs e)
         {
             // Navigasi kembali ke halaman Dashboard
             ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new DashboardPage());
         }
-
+        
         private void VetListButton_Click(object sender, RoutedEventArgs e)
         {
             // Navigasi kembali ke halaman Vet List
@@ -41,11 +42,6 @@ namespace pawdoc
             // Navigasi kembali ke halaman Pet Diary
             ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new DisplayDiaryPage());
         }
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Navigasi kembali ke halaman sebelumnya
-            NavigationService.GoBack();
-        }
 
         //error dikit bro di xamlnya jadi gw bikinin ini dulu 
         private void ProfileButton_Click(object sender, RoutedEventArgs e)
@@ -53,7 +49,6 @@ namespace pawdoc
             // Navigasi ke halaman Display Pet Diary 
             ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new DisplayProfileOwner());
         }
-
         // [DIBIKIN BISA OTOMATIS BIKIN PROFILE (SetUpProfileOwnerPage)OR LIHAT PROFILE (DisplayProfileOwnerPage)]
 
         //private async void ProfileButton_Click(object sender, RoutedEventArgs e)
@@ -95,5 +90,52 @@ namespace pawdoc
         //        MessageBox.Show($"An error occurred while checking the user profile: {ex.Message}");
         //    }
         //}
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Navigasi kembali ke halaman sebelumnya
+            NavigationService.GoBack();
+        }  
+
+        // [TOMBOL SAVE]
+
+        // Submit Button Click Handler
+        //private async void SubmitButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    string symptoms = SymptompsTextBox.Text.Trim();
+        //    string diagnosis = DiagnosisTextBox.Text.Trim();
+        //    string medicine = MedicineBox.Text.Trim();
+        //    string extraNote = ExtraNoteBox.Text.Trim();
+        //    
+        //    // Validasi Input
+        //    if (string.IsNullOrEmpty(symptoms) || string.IsNullOrEmpty(diagnosis) ||
+        //        string.IsNullOrEmpty(medicine) || string.IsNullOrEmpty(extraNote))
+        //    {
+        //        MessageBox.Show("Please fill in all the fields.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+        //        return;
+        //    }
+
+        //    try
+        //    {
+        //        // Save diary entry to Firestore 
+        //        var firestoreService = new FirestoreService;
+        //        var diaryEntry = new DiaryEntry
+        //        {
+        //            Id = Guid.NewGuid().ToString, // Generate unique ID
+        //            Symptoms = symptoms,
+        //            Diagnosis = diagnosis,
+        //            Medicine = medicine,
+        //            ExtraNote = extraNote,
+        //            DateCreated = DateTime.Now
+        //        };
+
+        //        await firestoreService.AddDiaryEntryAsync(diaryEntry);
+
+        //        MessageBox.Show("Diary entry saved successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+        //    }
+        //     
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Error saving diary entry: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        //    }
     }
 }

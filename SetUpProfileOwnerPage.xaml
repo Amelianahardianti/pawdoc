@@ -60,6 +60,7 @@
                         <Button Content="Save" Width="80" Height="30" Margin="0,20,0,0" HorizontalAlignment="Left"
                                 Background="#D98A50" Foreground="White" FontWeight="Bold"
                                 Click="SaveButton_Click"/>
+                        
                     </StackPanel>
                 </Grid>
             </Grid>
