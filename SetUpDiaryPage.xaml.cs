@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Google.Cloud.Firestore;
+using pawdoc.Class;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,11 @@ namespace pawdoc
     /// </summary>
     public partial class SetUpDiaryPage : Page
     {
+        FirestoreService _firestoreService;
         public SetUpDiaryPage()
         {
             InitializeComponent();
+            this._firestoreService = ((selo)Application.Current.MainWindow).FirestoreService;
         }
 
         // Navigation Button Click Handler
@@ -94,7 +98,34 @@ namespace pawdoc
         {
             // Navigasi kembali ke halaman sebelumnya
             NavigationService.GoBack();
-        }  
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            string sysmptoms = SymptompsTextBox.Text;
+            string diagnosis = DiagnosisTextBox.Text;
+            string medicine = MedicineBox.Text;
+            string extraNote = ExtraNoteBox.Text;
+            try
+            {
+                var diaryEntry = new DiaryEntry
+                {
+                    Username = ((selo)Application.Current.MainWindow).user.Username,
+                    Symptoms = sysmptoms,
+                    Diagnosis = diagnosis,
+                    Medicine = medicine,
+                    ExtraNote = extraNote,
+                    DateCreated = Timestamp.GetCurrentTimestamp(),
+                    Id = "1",
+                };
+                _firestoreService.AddDiaryEntryAsync(diaryEntry);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Masuk ke database gagal");
+            }
+        }
 
         // [TOMBOL SAVE]
 

@@ -58,7 +58,7 @@ namespace pawdoc
 
         private void PetDiaryButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new SetUpDiaryPage());
         }
     }
 }

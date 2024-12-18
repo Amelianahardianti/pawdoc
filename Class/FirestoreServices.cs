@@ -1,4 +1,5 @@
-﻿using Google.Cloud.Firestore;
+﻿using Firebase.Auth;
+using Google.Cloud.Firestore;
 using pawdoc.Class;
 using System;
 using System.Threading.Tasks;
@@ -65,10 +66,19 @@ namespace pawdoc
         {
             try
             {
+                // Akses koleksi Firestore
+                CollectionReference usersCollection = _firestoreDb.Collection("diary");
 
-            } catch (Exception ex)
+                // Buat dokumen dengan ID unik
+                DocumentReference docRef = usersCollection.Document($"${diaryEntry.Username}_{diaryEntry.DateCreated}"); // Username dijadikan ID dokumen
+
+                await docRef.SetAsync(diaryEntry);
+                MessageBox.Show($"User {diaryEntry.Username} berhasil ditambahkan ke Firestore.");
+
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show("Gagal saat memasukkan diary ke user");
+                MessageBox.Show($"Gagal saat memasukkan diary ke user: {ex.Message}");
             }
         }
 

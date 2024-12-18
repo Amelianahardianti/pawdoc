@@ -67,10 +67,10 @@
                             <TextBlock Text="Extra Note" Foreground="Gray" FontSize="14" />
                             <TextBox x:Name="ExtraNoteBox" Height="80" Background="#F5F5F5" BorderBrush="#FFC6C6C6" BorderThickness="1" />
                         </StackPanel>
-                        <!-- INI BIKIN error
-                        <Button Content="Save" Margin="200,10,200,0" Background="#FEC78F" BorderBrush="Transparent" Foreground="White" Click="SaveButton_Click"/>-->
 
-                </StackPanel>
+                <Button Content="Save" Margin="200,10,200,0" Background="#FEC78F" BorderBrush="Transparent" Foreground="White" Click="SaveButton_Click"/>
+
+            </StackPanel>
                 </Grid>
     </Grid>
 </Page>
