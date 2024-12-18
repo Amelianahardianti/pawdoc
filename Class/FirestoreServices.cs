@@ -11,39 +11,84 @@ namespace pawdoc
 
         public FirestoreService()
         {
-            // Inisialisasi Firestore
-            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "pawdoc-12345-firebase-adminsdk-u5zgj-2ae4b4ce7c.json");
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
-
-            // Debug: Verifikasi path file
-            Console.WriteLine($"Path JSON: {path}");
-            if (!System.IO.File.Exists(path))
+            try
             {
-                throw new Exception($"File JSON tidak ditemukan di: {path}");
-            }
+                // Path file JSON kredensial Firebase
+                string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "pawdoc-12345-firebase-adminsdk-u5zgj-2ae4b4ce7c.json");
+                Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
 
-            _firestoreDb = FirestoreDb.Create("pawdoc-12345");
-            Console.WriteLine("Koneksi ke Firestore berhasil.");
+                // Debug: Cek apakah file JSON ada
+                if (!System.IO.File.Exists(path))
+                {
+                    throw new Exception($"File JSON tidak ditemukan di: {path}");
+                }
+
+                // Inisialisasi koneksi Firestore
+                _firestoreDb = FirestoreDb.Create("pawdoc-12345"); // Ganti sesuai Project ID Firebase
+                Console.WriteLine("Koneksi ke Firestore berhasil.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Gagal menginisialisasi Firestore: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                throw;
+            }
         }
 
+        // Menambahkan user baru ke Firestore
         public async Task AddUserToFirestoreAsync(User user)
         {
             try
             {
-                Console.WriteLine("Menghubungkan ke Firestore...");
-                CollectionReference usersCollection = _firestoreDb.Collection("pawdoc");
+                if (user == null)
+                    throw new ArgumentNullException(nameof(user), "Objek User tidak boleh null.");
 
-                await usersCollection.AddAsync(user);
+                // Akses koleksi Firestore
+                CollectionReference usersCollection = _firestoreDb.Collection("users");
 
-                // Debug: Konfirmasi jika data berhasil dikirim
-                Console.WriteLine($"Data berhasil dikirim: Username: {user.Username}, Email: {user.Email}, Role: {user.Role}");
-                MessageBox.Show("Data berhasil dikirim ke Firestore!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                // Buat dokumen dengan ID unik
+                DocumentReference docRef = usersCollection.Document(user.Username); // Username dijadikan ID dokumen
+
+                // Tambahkan data user
+                await docRef.SetAsync(user);
+                Console.WriteLine($"User {user.Username} berhasil ditambahkan ke Firestore.");
+                MessageBox.Show($"User {user.Username} berhasil disimpan!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
-                // Debug: Log jika ada error
-                Console.WriteLine($"Error saat menyimpan data: {ex.Message}");
-                MessageBox.Show($"Error menyimpan data ke Firestore: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Console.WriteLine($"Error saat menambahkan user ke Firestore: {ex.Message}");
+                MessageBox.Show($"Gagal menambahkan user: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        // Mendapatkan user dari Firestore berdasarkan username
+        public async Task<User> GetUserFromFirestoreAsync(string username)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(username))
+                    throw new ArgumentException("Username tidak boleh kosong.", nameof(username));
+
+                // Akses koleksi Firestore dan dokumen
+                DocumentReference docRef = _firestoreDb.Collection("users").Document(username);
+                DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
+
+                if (snapshot.Exists)
+                {
+                    User user = snapshot.ConvertTo<User>();
+                    Console.WriteLine($"Data ditemukan: {user.Username}, Email: {user.Email}, Role: {user.Role}");
+                    return user;
+                }
+                else
+                {
+                    Console.WriteLine($"User dengan username '{username}' tidak ditemukan.");
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error saat mengambil data user: {ex.Message}");
+                MessageBox.Show($"Gagal mengambil data user: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return null;
             }
         }
     }

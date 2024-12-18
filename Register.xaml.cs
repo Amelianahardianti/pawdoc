@@ -4,26 +4,41 @@ using System.Windows.Controls;
 
 namespace pawdoc
 {
+
+
     public partial class Register : Page
     {
+        private readonly FirestoreService _firestoreService;
+
         public Register()
         {
             InitializeComponent();
+            // Buat instance FirestoreService
+            FirestoreService firestoreService = new FirestoreService();
+
         }
 
         private void HyperlinkBack_Click(object sender, RoutedEventArgs e)
         {
-            // Navigasi kembali ke halaman Login
-            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new Login());
+            try
+            {
+                // Navigasi kembali ke halaman Login
+                ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new Login());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error navigating to Login: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private async void SignInButton_Click(object sender, RoutedEventArgs e)
         {
+            // Ambil input dari form
             string username = UsernameTextBox.Text.Trim();
             string email = EmailTextBox.Text.Trim();
             string password = PasswordBox.Password.Trim();
             string confirmPassword = ConfirmPasswordBox.Password.Trim();
-            string selectedRole = ((ComboBoxItem)RoleComboBox.SelectedItem)?.Content.ToString();
+            string selectedRole = ((ComboBoxItem)RoleComboBox.SelectedItem)?.Content?.ToString();
 
             // Validasi Input
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(email) ||
@@ -47,14 +62,14 @@ namespace pawdoc
 
             try
             {
-                // Daftarkan ke Firebase Authentication
+                // Daftarkan user ke Firebase Authentication
                 var authContext = ((selo)Application.Current.MainWindow).FirebaseAuth;
                 var auth = await authContext.SignUpWithEmailPasswordAsync(email, password);
 
                 if (auth != null)
                 {
                     // Konversi role dari string ke enum UserRole
-                    UserRole roleEnum = (UserRole)Enum.Parse(typeof(UserRole), selectedRole, true);
+                    UserRole roleEnum = Enum.TryParse(selectedRole, true, out UserRole role) ? role : UserRole.Owner;
 
                     // Simpan data user ke Firestore
                     var newUser = new User
@@ -62,17 +77,14 @@ namespace pawdoc
                         Id = Guid.NewGuid().ToString(), // Auto-generate ID
                         Username = username,
                         Email = email,
-                        Password = "******", // Hindari menyimpan password plaintext
                         Role = roleEnum
                     };
 
-                    var firestoreService = new FirestoreService();
-                    await firestoreService.AddUserToFirestoreAsync(newUser);
+                    await _firestoreService.AddUserToFirestoreAsync(newUser);
 
                     MessageBox.Show("Registration successful!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                    // Arahkan ke halaman Dashboard
-                    // Pastikan class Dashboard tersedia dan diimport dengan namespace yang benar
+                    // Navigasi ke DashboardPage
                     ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new DashboardPage());
                 }
                 else
@@ -100,4 +112,8 @@ namespace pawdoc
             }
         }
     }
+
+    // Enum Role untuk user
+   
 }
+

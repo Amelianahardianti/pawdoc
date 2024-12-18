@@ -6,6 +6,7 @@ using Google.Cloud.Firestore; // Library Firestore
 using System.IO;
 using pawdoc;
 
+
 namespace pawdoc
 {
     public partial class App : Application
@@ -49,5 +50,11 @@ namespace pawdoc
             await _host.StopAsync();
             base.OnExit(e);
         }
+
+        public static class GlobalUser
+        {
+            public static string CurrentUserEmail { get; set; } // Menyimpan email pengguna yang login
+        }
+
     }
 }
