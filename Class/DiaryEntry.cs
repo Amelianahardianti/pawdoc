@@ -8,7 +8,7 @@ namespace pawdoc.Class
 {
     public class DiaryEntry
     {
-        public string UserId { get; set; }
+        public string Username { get; set; }
         public string Id { get;  set; } // Read-only after initialization
         public string Symptoms { get; set; }
         public string Diagnosis { get; set; }
