@@ -11,6 +11,7 @@
   <ItemGroup>
     <None Remove="appsettings.json" />
     <None Remove="Assets\anjingkucing.svg" />
+    <None Remove="Assets\CATDOG.png" />
     <None Remove="Assets\clinic.png" />
     <None Remove="Assets\doc1.png" />
     <None Remove="Assets\doc2.png" />
@@ -27,6 +28,7 @@
     <None Remove="Assets\pawdoc-12345-firebase-adminsdk-u5zgj-2ae4b4ce7c.json" />
     <None Remove="Assets\User Profile Circle.png" />
     <None Remove="Assets\vet.png" />
+    <None Remove="Assets\veticon.png" />
     <None Remove="Assets\x.svg" />
     <None Remove="facebook.svg" />
     <None Remove="google.png" />
@@ -38,6 +40,9 @@
     </Resource>
     <Resource Include="Assets\google.png" />
     <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\CATDOG.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\clinic.png">
@@ -63,6 +68,9 @@
     </Content>
     <Content Include="Assets\pawdoc-12345-firebase-adminsdk-u5zgj-2ae4b4ce7c.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\veticon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\x.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
