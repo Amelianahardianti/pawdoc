@@ -45,20 +45,5 @@ namespace pawdoc
         }
         private void ChatWithVeterinarian_Click(object sender, RoutedEventArgs e) { }
         private void CheckPetProfile_Click(object sender, RoutedEventArgs e) { }
-
-        private void MakePetDiaryButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void AddVetListButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void PetDiaryButton_Click(object sender, RoutedEventArgs e)
-        {
-            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new SetUpDiaryPage());
-        }
     }
 }
