@@ -21,17 +21,17 @@
             </StackPanel>
         </Grid>
 
-        <TextBlock Text="Pet Diary Database" FontSize="24" Foreground="#ED9455" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10"/>
+        <TextBlock Text="Pet Diary Database" FontSize="24" Foreground="#ED9455" FontWeight="Bold" HorizontalAlignment="Left" Margin="395,10,0,10"/>
 
         <!-- Main Content -->
-        <ScrollViewer Margin="223,20,20,20">
-                <!-- Header -->
+        <ScrollViewer Margin="224,47,19,-7">
+            <!-- Header -->
 
             <StackPanel x:Name="StackPanelDiary">
-                
+
             </StackPanel>
-                
-            
+
+
         </ScrollViewer>
     </Grid>
 </Page>
