@@ -1,5 +1,6 @@
 ﻿using pawdoc.Class;
 using pawdoc.component;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -7,29 +8,49 @@ namespace pawdoc
 {
     public partial class PetDiary : Page
     {
-        FirestoreService firestoreService;
-        User user;
+        private FirestoreService firestoreService;
+        private User user;
+
         public PetDiary()
         {
             InitializeComponent();
             firestoreService = ((selo)Application.Current.MainWindow).FirestoreService;
             this.user = ((selo)Application.Current.MainWindow).user;
-            // Example: Dynamically adding content to the ScrollViewer
             AddDynamicContent();
         }
 
         // Method to add dynamic content to the ScrollViewer
         private async void AddDynamicContent()
         {
-            List<DiaryEntry> entries = new List<DiaryEntry>();
-            entries = await firestoreService.GetDiaryEntriesAsync(user);
-            // Create a StackPanel for the dynamic content
+            List<DiaryEntry> entries = await firestoreService.GetDiaryEntriesAsync(user);
+
             foreach (DiaryEntry entry in entries)
             {
-                DiaryComponent diaryComponent = new DiaryComponent(entry);
+                var diaryComponent = new DiaryComponent(entry);
+
+                // Subscribe to the delete event from the DiaryComponent
+                diaryComponent.OnDelete += async (DiaryEntry deletedEntry) =>
+                {
+                    // Delete the entry from Firestore
+                    bool isDeleted = await firestoreService.DeleteDiaryEntryAsync(deletedEntry);
+                    if (isDeleted)
+                    {
+                        // Remove the DiaryComponent from the StackPanel
+                        StackPanelDiary.Children.Remove(diaryComponent);
+
+                        // Show success notification
+                        MessageBox.Show("Diary entry deleted successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        // Show error notification
+                        MessageBox.Show("Failed to delete diary entry.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                };
+
+                // Add the DiaryComponent to the StackPanel
                 StackPanelDiary.Children.Add(diaryComponent);
             }
-
         }
 
         // Navigate to ClinicPage
@@ -67,6 +88,5 @@ namespace pawdoc
         {
             this.NavigationService.Navigate(new DashboardPage(((selo)Application.Current.MainWindow).user));
         }
-
     }
 }

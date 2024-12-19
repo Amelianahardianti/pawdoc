@@ -2,6 +2,7 @@
 using Google.Cloud.Firestore;
 using pawdoc.Class;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -52,7 +53,6 @@ namespace pawdoc
 
                 // Tambahkan data user
                 await docRef.SetAsync(user);
-                MessageBox.Show($"User {user.Username} berhasil ditambahkan ke Firestore.");
                 MessageBox.Show($"User {user.Username} berhasil disimpan!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
@@ -67,18 +67,17 @@ namespace pawdoc
             try
             {
                 // Akses koleksi Firestore
-                CollectionReference usersCollection = _firestoreDb.Collection("diary");
+                CollectionReference diaryCollection = _firestoreDb.Collection("diary");
 
                 // Buat dokumen dengan ID unik
-                DocumentReference docRef = usersCollection.Document($"${diaryEntry.Username}_{diaryEntry.DateCreated}"); // Username dijadikan ID dokumen
+                DocumentReference docRef = diaryCollection.Document($"{diaryEntry.Username}_{diaryEntry.DateCreated}");
 
                 await docRef.SetAsync(diaryEntry);
-                MessageBox.Show($"User {diaryEntry.Username} berhasil ditambahkan ke Firestore.");
-
+                MessageBox.Show($"Diary entry untuk {diaryEntry.Username} berhasil disimpan!");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Gagal saat memasukkan diary ke user: {ex.Message}");
+                MessageBox.Show($"Gagal saat memasukkan diary entry: {ex.Message}");
             }
         }
 
@@ -88,7 +87,7 @@ namespace pawdoc
             try
             {
                 if (string.IsNullOrEmpty(email))
-                    throw new ArgumentException("Username tidak boleh kosong.", nameof(email));
+                    throw new ArgumentException("Email tidak boleh kosong.", nameof(email));
 
                 // Akses koleksi Firestore dan dokumen
                 DocumentReference docRef = _firestoreDb.Collection("users").Document(email);
@@ -97,7 +96,6 @@ namespace pawdoc
                 if (snapshot.Exists)
                 {
                     User user = snapshot.ConvertTo<User>();
-                    MessageBox.Show($"Data ditemukan: {user.Username}, Email: {user.Email}, Role: {user.Role}");
                     return user;
                 }
                 else
@@ -120,22 +118,21 @@ namespace pawdoc
             try
             {
                 DocumentReference docRef = _firestoreDb.Collection("users").Document(email);
-                User? updatedUser = currentUser;
-                updatedUser.Username = username;
+                currentUser.Username = username;
 
                 await docRef.UpdateAsync(new Dictionary<string, object>
-                    {
-                        { "Username", username}
-                    }
-                );
-                MessageBox.Show("Profile berhasil di update");
-                return updatedUser;
+                {
+                    { "Username", username }
+                });
+
+                MessageBox.Show("Profile berhasil diupdate", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                return currentUser;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Gagal Mengupdate");
+                MessageBox.Show($"Gagal mengupdate profile: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return null;
             }
-            return null;
         }
 
         public async Task<List<DiaryEntry>> GetDiaryEntriesAsync(User user)
@@ -169,6 +166,28 @@ namespace pawdoc
             }
         }
 
+        // Method to delete a diary entry from Firestore
+        public async Task<bool> DeleteDiaryEntryAsync(DiaryEntry diaryEntry)
+        {
+            try
+            {
+                // Construct the document ID to match how it was saved
+                string documentId = $"{diaryEntry.Username}_{diaryEntry.DateCreated}";
 
+                // Reference the document in Firestore
+                DocumentReference docRef = _firestoreDb.Collection("diary").Document(documentId);
+
+                // Delete the document
+                await docRef.DeleteAsync();
+
+                Console.WriteLine($"Diary entry {documentId} successfully deleted from Firestore.");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to delete entry from Firestore: {ex.Message}");
+                return false;
+            }
+        }
     }
 }
