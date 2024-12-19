@@ -23,7 +23,7 @@ namespace pawdoc
             // Inisialisasi Firestore
             string path = "pawdoc-12345-firebase-adminsdk-u5zgj-2ae4b4ce7c.json"; // File Service Account JSON
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
-           // firestoreDb = FirestoreDb.Create(ProjectId);
+            // firestoreDb = FirestoreDb.Create(ProjectId);
         }
 
         // ------------------- AUTENTIKASI -------------------

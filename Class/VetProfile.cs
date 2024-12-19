@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace pawdoc
+namespace pawdoc.Models
 {
     public class VetProfile
     {

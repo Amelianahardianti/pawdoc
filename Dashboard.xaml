@@ -37,14 +37,14 @@
         <StackPanel VerticalAlignment="Bottom" Margin="20,0,20,30">
             <!-- Action Buttons -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="2,0,0,20">
-                <Button Background="#FFFEEFD5" BorderBrush="Transparent" Padding="20,10" Margin="0,20,10,10" Width="292" Height="91" Click="MakePetDiaryButton_Click">
+                <Button Background="#FFFEEFD5" BorderBrush="Transparent" Padding="20,10" Margin="0,20,10,10" Width="292" Height="91" Click="PetDiaryButton_Click">
                     <StackPanel Margin="0,10,80,10">
                         <TextBlock Text="Make Pet Diary" FontSize="16" FontWeight="Bold" Foreground="#000" />
                         <TextBlock FontSize="10" Foreground="#000" TextWrapping="Wrap" Width="147" HorizontalAlignment="Left" ><Run Language="en-gb" Text="Write down your pet medical activities"/></TextBlock>
                     </StackPanel>
                 </Button>
 
-                <Button Background="#FFFEEFD5" BorderBrush="Transparent" Padding="20,10" Margin="0,20,10,10" Width="292" Height="91" Click="AddVetListButton_Click">
+                <Button Background="#FFFEEFD5" BorderBrush="Transparent" Padding="20,10" Margin="0,20,10,10" Width="292" Height="91" Click="VetListButton_Click">
                     <StackPanel Margin="0,10,80,10">
                         <TextBlock FontSize="16" FontWeight="Bold" Foreground="#000" ><Run Language="en-gb" Text="Add Your Vet List"/></TextBlock>
                         <TextBlock FontSize="10" Foreground="#000" TextWrapping="Wrap" Width="147" HorizontalAlignment="Left" ><Run Language="en-gb" Text="Create your own list of vet"/></TextBlock>

@@ -39,7 +39,7 @@ namespace pawdoc
         private void PetDiaryButton_Click(object sender, RoutedEventArgs e)
         {
             // Navigasi kembali ke halaman Pet Diary
-            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new DisplayDiaryPage());
+            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new SetUpDiaryPage());
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
@@ -53,7 +53,7 @@ namespace pawdoc
             // Navigasi ke halaman Display Pet Diary 
             ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new DisplayProfileOwner());
         }
-
+    
         // [DIBIKIN BISA OTOMATIS BIKIN PROFILE (SetUpProfileOwnerPage)OR LIHAT PROFILE (DisplayProfileOwnerPage)]
 
         //private async void ProfileButton_Click(object sender, RoutedEventArgs e)

@@ -35,7 +35,7 @@ namespace pawdoc
             // Navigasi kembali ke halaman Dashboard
             ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new DashboardPage());
         }
-        
+
         private void VetListButton_Click(object sender, RoutedEventArgs e)
         {
             // Navigasi kembali ke halaman Vet List
@@ -44,7 +44,7 @@ namespace pawdoc
         private void PetDiaryButton_Click(object sender, RoutedEventArgs e)
         {
             // Navigasi kembali ke halaman Pet Diary
-            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new DisplayDiaryPage());
+            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new SetUpDiaryPage());
         }
 
         //error dikit bro di xamlnya jadi gw bikinin ini dulu 

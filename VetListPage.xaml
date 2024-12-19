@@ -22,23 +22,98 @@
 
                 <!-- Navigation Menu -->
                 <StackPanel>
-                    <Button Content="Vet List" FontSize="14" Foreground="#F2994A" FontWeight="Bold" Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" Click="VetListButton_Click"/>
-                    <Button Content="Pet Diary" FontSize="14" Foreground="#F2994A" FontWeight="Bold" Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" Click="PetDiaryButton_Click"/>
-                    <Button Content="Profile" FontSize="14" Foreground="#F2994A" FontWeight="Bold" Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" Click="ProfileButton_Click"/>
+                    <Button Content="Vet List" FontSize="14" Foreground="#F2994A" FontWeight="Bold" 
+                            Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" 
+                            Click="VetListButton_Click"/>
+                    <Button Content="Pet Diary" FontSize="14" Foreground="#F2994A" FontWeight="Bold" 
+                            Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" 
+                            Click="PetDiaryButton_Click"/>
+                    <Button Content="Profile" FontSize="14" Foreground="#F2994A" FontWeight="Bold" 
+                            Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" 
+                            Click="ProfileButton_Click"/>
                 </StackPanel>
             </StackPanel>
         </Grid>
 
+        <!-- Vet List -->
+        <Grid Margin="220,50,20,50">
+            <UniformGrid Columns="2" Rows="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,20">
+                <!-- Vet 1 -->
+                <Border Background="White" CornerRadius="10" Padding="10" Margin="10"
+                        BorderBrush="#FFC6C6C6" BorderThickness="1">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Ellipse Width="50" Height="50" Margin="10">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="Assets/doc1.png" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <StackPanel>
+                            <TextBlock Text="drh. Baskoro, Sp. BdRh." FontWeight="Bold" FontSize="14" Foreground="#333333" />
+                            <TextBlock Text="Ahli Bedah" FontSize="12" Foreground="#777777" />
+                            <TextBlock Text="PDHI-12345/XYT/2024" FontSize="12" Foreground="#777777" />
+                            <TextBlock Text="Jakarta" FontSize="12" Foreground="#777777" />
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
 
-        <!-- Back Button INI BLM DIISI DI GW ERROR
-        <Button Content="Back" Width="80" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,20"
-                Background="#FEC78F" Foreground="White" BorderBrush="Transparent" Click="BackButton_Click"/>
-        <Button Background="White" HorizontalAlignment="Left" Margin="250,71,0,0" VerticalAlignment="Top" Height="70" Width="220" Click="Doctor1_Click"/>
-        <Button Background="White" HorizontalAlignment="Left" Margin="525,71,0,0" VerticalAlignment="Top" Height="70" Width="220" Click="Doctor2_Click"/>
-        <Button Background="White" HorizontalAlignment="Left" Margin="250,175,0,0" VerticalAlignment="Top" Height="70" Width="220" Click="Doctor3_Click"/>
-        <Button Background="White" HorizontalAlignment="Left" Margin="525,175,0,0" VerticalAlignment="Top" Height="70" Width="220" Click="Doctor4_Click"/>
-        <Button Background="White" HorizontalAlignment="Left" Margin="250,279,0,0" VerticalAlignment="Top" Height="70" Width="220" Click="Doctor5_Click"/>
-        <Button Background="White" HorizontalAlignment="Left" Margin="525,279,0,0" VerticalAlignment="Top" Height="70" Width="220" Click="Doctor6_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="335,197,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/> -->
+                <!-- Vet 2 -->
+                <Border Background="White" CornerRadius="10" Padding="10" Margin="10"
+                        BorderBrush="#FFC6C6C6" BorderThickness="1">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Ellipse Width="50" Height="50" Margin="10">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="Assets/docohya.png" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <StackPanel>
+                            <TextBlock Text="drh. OHYA, Sp. BdRh." FontWeight="Bold" FontSize="14" Foreground="#333333" />
+                            <TextBlock Text="Ahli Bedah" FontSize="12" Foreground="#777777" />
+                            <TextBlock Text="PDHI-12346/XYT/2024" FontSize="12" Foreground="#777777" />
+                            <TextBlock Text="Pontianak" FontSize="12" Foreground="#777777" />
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- Vet 3 -->
+                <Border Background="White" CornerRadius="10" Padding="10" Margin="10"
+                        BorderBrush="#FFC6C6C6" BorderThickness="1">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Ellipse Width="50" Height="50" Margin="10">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="Assets/doc2.png" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <StackPanel>
+                            <TextBlock Text="drh. Bambang, Sp. BdRh." FontWeight="Bold" FontSize="14" Foreground="#333333" />
+                            <TextBlock Text="Ahli Bedah" FontSize="12" Foreground="#777777" />
+                            <TextBlock Text="PDHI-12347/XYT/2024" FontSize="12" Foreground="#777777" />
+                            <TextBlock Text="Jakarta" FontSize="12" Foreground="#777777" />
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- Vet 4 -->
+                <Border Background="White" CornerRadius="10" Padding="10" Margin="10"
+                        BorderBrush="#FFC6C6C6" BorderThickness="1">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Ellipse Width="50" Height="50" Margin="10">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="Assets/doc3.png" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <StackPanel>
+                            <TextBlock Text="drh. Mingyu, Sp. BdRh." FontWeight="Bold" FontSize="14" Foreground="#333333" />
+                            <TextBlock Text="Ahli Bedah" FontSize="12" Foreground="#777777" />
+                            <TextBlock Text="PDHI-12348/XYT/2024" FontSize="12" Foreground="#777777" />
+                            <TextBlock Text="Pontianak" FontSize="12" Foreground="#777777" />
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </UniformGrid>
+            <!-- Back Button -->
+            <Button Content="Back" Width="80" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,20"
+                    Background="#FEC78F" Foreground="White" BorderBrush="Transparent" Click="BackButton_Click"/>
+        </Grid>
     </Grid>
 </Page>
+

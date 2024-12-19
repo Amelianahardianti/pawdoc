@@ -11,6 +11,10 @@
   <ItemGroup>
     <None Remove="appsettings.json" />
     <None Remove="Assets\anjingkucing.svg" />
+    <None Remove="Assets\doc1.png" />
+    <None Remove="Assets\doc2.png" />
+    <None Remove="Assets\doc3.png" />
+    <None Remove="Assets\docohya.png" />
     <None Remove="Assets\facebook.svg" />
     <None Remove="Assets\google.png" />
     <None Remove="Assets\google.svg" />
@@ -32,6 +36,18 @@
     </Resource>
     <Resource Include="Assets\google.png" />
     <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\doc1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\doc2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\doc3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\docohya.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\google.svg">

@@ -13,7 +13,7 @@ namespace pawdoc.Class
         [FirestoreProperty]
         public string Username { get; set; }
         [FirestoreProperty]
-        public string Id { get;  set; } // Read-only after initialization
+        public string Id { get; set; } // Read-only after initialization
         [FirestoreProperty]
         public string Symptoms { get; set; }
         [FirestoreProperty]
@@ -23,7 +23,7 @@ namespace pawdoc.Class
         [FirestoreProperty]
         public string ExtraNote { get; set; }
         [FirestoreProperty]
-        public Timestamp DateCreated { get;  set; } // Read-only after initialization
+        public Timestamp DateCreated { get; set; } // Read-only after initialization
 
         // Constructor
         public DiaryEntry() { }
