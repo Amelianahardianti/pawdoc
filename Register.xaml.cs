@@ -34,10 +34,10 @@ namespace pawdoc
         private async void SignInButton_Click(object sender, RoutedEventArgs e)
         {
             // Ambil input dari form
-            string username = UsernameTextBox.Text.Trim();
-            string email = EmailTextBox.Text.Trim();
-            string password = PasswordBox.Password.Trim();
-            string confirmPassword = ConfirmPasswordBox.Password.Trim();
+            string username = UsernameTextBox.Text;
+            string email = EmailTextBox.Text;
+            string password = PasswordBox.Password;
+            string confirmPassword = ConfirmPasswordBox.Password;
             string selectedRole = ((ComboBoxItem)RoleComboBox.SelectedItem)?.Content?.ToString();
             
 
@@ -82,6 +82,7 @@ namespace pawdoc
                     };
 
                     _firestoreService.AddUserToFirestoreAsync(newUser);
+                    ((selo)Application.Current.MainWindow).user = newUser;
 
                     MessageBox.Show("Registration successful!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 

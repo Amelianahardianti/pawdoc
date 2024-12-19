@@ -1,0 +1,38 @@
+﻿<Page x:Class="pawdoc.PetDiary"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:component="clr-namespace:pawdoc.component"
+      mc:Ignorable="d" 
+      Title="PetDiary" Height="450" Width="800">
+
+    <Grid Background="White">
+        <!-- Sidebar -->
+        <Grid Background="#FFFEEFD5" Width="200" HorizontalAlignment="Left">
+            <StackPanel VerticalAlignment="Top" Margin="20,50,0,0">
+                <TextBlock Text="PawDoc" FontSize="24" FontWeight="Bold" Foreground="#FEC78F" HorizontalAlignment="Left"/>
+                <TextBlock Text="Your Pet's Best Friend" FontSize="12" Foreground="#CBA15E" Margin="0,5,0,20"/>
+                <Button Content="Clinic Information" FontSize="14" Foreground="#F2994A" FontWeight="Bold" Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" Click="ClinicButton_Click"/>
+                <Button Content="Vet List" FontSize="14" Foreground="#F2994A" FontWeight="Bold" Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" Click="VetListButton_Click"/>
+                <Button Content="Input Diary" FontSize="14" Foreground="#F2994A" FontWeight="Bold" Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" Click="InputDiaryButton_Click"/>
+                <Button Content="Pet Diary" FontSize="14" Foreground="#F2994A" FontWeight="Bold" Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" Click="PetDiary_Click"/>
+                <Button Content="Profile" FontSize="14" Foreground="#F2994A" FontWeight="Bold" Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" Click="ProfileButton_Click"/>
+                <Button Content="Back" Background="#FEC78F" Foreground="White" BorderBrush="Transparent" Width="100" Height="35" Margin="0,20,0,0" Click="BackButton_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Main Content -->
+        <ScrollViewer Margin="223,20,20,20" x:Name="DiaryScroll">
+            <StackPanel>
+                <!-- Header -->
+                <TextBlock Text="Pet Diary Database" FontSize="24" Foreground="#ED9455" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10"/>
+
+                <!-- Pet Info Sections -->
+                <StackPanel x:Name="StackPanelDiary">
+                    
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

@@ -97,19 +97,21 @@ namespace pawdoc
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             // Navigasi kembali ke halaman sebelumnya
-            NavigationService.GoBack();
+            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new DashboardPage());
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            string sysmptoms = SymptompsTextBox.Text;
+            string petname = PetNameTextBox.Text;   
+            string sysmptoms = SymptomsTextBox.Text;
             string diagnosis = DiagnosisTextBox.Text;
-            string medicine = MedicineBox.Text;
-            string extraNote = ExtraNoteBox.Text;
+            string medicine = MedicineTextBox.Text;
+            string extraNote = ExtraNotesTextBox.Text;
             try
             {
                 var diaryEntry = new DiaryEntry
                 {
+                    Petname = petname,
                     Username = ((selo)Application.Current.MainWindow).user.Username,
                     Symptoms = sysmptoms,
                     Diagnosis = diagnosis,

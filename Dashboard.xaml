@@ -54,7 +54,14 @@
 
             <!-- Navigation Buttons -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                
+
+                <Button Width="80" Height="80" Background="White" BorderBrush="Transparent" Click="ClinicButton_Click">
+                    <StackPanel>
+                        <Image Source="/Assets/clinic.png" Width="40" Height="40" />
+                        <TextBlock Text="Clinic" FontSize="12" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+
                 <Button Width="80" Height="80" Margin="10" Background="White" BorderBrush="Transparent" Click="VetListButton_Click">
                     <StackPanel>
                         <Image Source="Assets/Group 53.png" Width="40" Height="40" />
@@ -62,14 +69,19 @@
                     </StackPanel>
                 </Button>
 
-                <Button Width="80" Height="80" Margin="10" Background="White" BorderBrush="Transparent" Click="PetDiaryButton_Click">
+                <Button Width="80" Height="80" Margin="10" Background="White" BorderBrush="Transparent" Click="InputPetDiaryButton_Click">
                     <StackPanel>
-                        <Image Source="Assets/Group 54.png" Width="40" Height="40" />
+                        <Image Source="Assets/notes.png" Width="40" Height="40" />
+                        <TextBlock FontSize="12" HorizontalAlignment="Center" Text="Input Diary" />
+                    </StackPanel>
+                </Button>
+                <Button Width="80" Height="80" Background="White" BorderBrush="Transparent" Click="ViewPetDiaryButton_Click">
+                    <StackPanel>
+                        <Image Source="/Assets/Group 54.png" Width="40" Height="40" />
                         <TextBlock FontSize="12" HorizontalAlignment="Center" ><Run Language="en-gb" Text="Pet Diary"/></TextBlock>
                     </StackPanel>
                 </Button>
-
-                <Button Width="80" Height="80" Margin="10" Background="White" BorderBrush="Transparent" Click="ProfileButton_Click">
+                <Button Width="80" Height="80" Background="White" BorderBrush="Transparent" Click="ProfileButton_Click">
                     <StackPanel>
                         <Image Source="Assets/User Profile Circle.png" Width="40" Height="40" />
                         <TextBlock Text="Profile" FontSize="12" HorizontalAlignment="Center" />

@@ -29,40 +29,34 @@ namespace pawdoc
 
 
         // Event handler tombol
-        private void MyPetsButton_Click(object sender, RoutedEventArgs e)
+        private void ClinicButton_Click(object sender, RoutedEventArgs e)
         {
-            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new MyPetsPage());
+            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new ClinicPage());
         }
         private void VetListButton_Click(object sender, RoutedEventArgs e)
         {
             ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new VetListPage());
 
         }
-        private void MessageInboxButton_Click(object sender, RoutedEventArgs e)
+        private void InputPetDiaryButton_Click(object sender, RoutedEventArgs e)
         {
+            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new SetUpDiaryPage());
 
         }
+        private void ViewPetDiaryButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new PetDiary());
+
+        }
+
         private void ProfileButton_Click(object sender, RoutedEventArgs e)
         {
-            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new ProfilePage());
-
-        }
-        private void ChatWithVeterinarian_Click(object sender, RoutedEventArgs e) { }
-        private void CheckPetProfile_Click(object sender, RoutedEventArgs e) { }
-
-        private void MakePetDiaryButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void AddVetListButton_Click(object sender, RoutedEventArgs e)
-        {
-
+            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new SetUpProfileOwnerPage());
         }
 
         private void PetDiaryButton_Click(object sender, RoutedEventArgs e)
         {
-            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new SetUpDiaryPage());
+            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new PetDiary());
         }
     }
 }

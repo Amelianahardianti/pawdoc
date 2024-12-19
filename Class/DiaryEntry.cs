@@ -12,6 +12,9 @@ namespace pawdoc.Class
     {
         [FirestoreProperty]
         public string Username { get; set; }
+
+        [FirestoreProperty]
+        public string Petname { get; set; }
         [FirestoreProperty]
         public string Id { get; set; } // Read-only after initialization
         [FirestoreProperty]
@@ -28,8 +31,9 @@ namespace pawdoc.Class
         // Constructor
         public DiaryEntry() { }
 
-        public DiaryEntry(string symptoms, string diagnosis, string medicine, string extraNote)
+        public DiaryEntry(string petname, string symptoms, string diagnosis, string medicine, string extraNote)
         {
+            Petname = petname;
             Id = Guid.NewGuid().ToString();
             Symptoms = symptoms;
             Diagnosis = diagnosis;

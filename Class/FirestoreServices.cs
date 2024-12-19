@@ -114,6 +114,61 @@ namespace pawdoc
             }
         }
 
+        public async Task<User?> UpdateUserFromFirestoreAsync(string email, string username)
+        {
+            User currentUser = ((selo)Application.Current.MainWindow).user;
+            try
+            {
+                DocumentReference docRef = _firestoreDb.Collection("users").Document(email);
+                User? updatedUser = currentUser;
+                updatedUser.Username = username;
+
+                await docRef.UpdateAsync(new Dictionary<string, object>
+                    {
+                        { "Username", username}
+                    }
+                );
+                MessageBox.Show("Profile berhasil di update");
+                return updatedUser;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal Mengupdate");
+            }
+            return null;
+        }
+
+        public async Task<List<DiaryEntry>> GetDiaryEntriesAsync(User user)
+        {
+            try
+            {
+                // Define the query
+                Query query = _firestoreDb.Collection("diary").WhereEqualTo("Username", user.Username);
+
+                // Execute the query
+                QuerySnapshot snapshot = await query.GetSnapshotAsync();
+
+                // Convert the results to a list of DiaryEntry objects
+                List<DiaryEntry> diaryEntries = new List<DiaryEntry>();
+
+                foreach (DocumentSnapshot document in snapshot.Documents)
+                {
+                    if (document.Exists)
+                    {
+                        DiaryEntry entry = document.ConvertTo<DiaryEntry>();
+                        diaryEntries.Add(entry);
+                    }
+                }
+
+                return diaryEntries;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error fetching diary entries: {ex.Message}");
+                return new List<DiaryEntry>(); // Return an empty list if there's an error
+            }
+        }
+
 
     }
 }

@@ -21,20 +21,12 @@
                 <Grid Grid.Row="1" Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1.5*"/>
-                        <ColumnDefinition Width="2.5*"/>
                     </Grid.ColumnDefinitions>
 
                     <!-- Profile Picture Section -->
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0">
-                        <TextBlock Text="Photo Profile" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center"/>
                         <Grid Width="120" Height="120">
-                            <Ellipse Width="120" Height="120" Fill="LightGray"/>
-                            <Image x:Name="ProfileImage" Source="{Binding ProfileImagePath}" Stretch="UniformToFill"
-                                   Width="120" Height="120" ClipToBounds="True"/>
                             <!-- Add Button -->
-                            <Button Content="+" Width="25" Height="25" Background="#D98A50" Foreground="White"
-                                    FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right"
-                                    Click="AddProfileImage_Click" ToolTip="Add Profile Image"/>
                         </Grid>
                     </StackPanel>
 
@@ -43,24 +35,17 @@
                         <TextBlock Text="Name" FontWeight="Bold" Margin="0,10,0,2"/>
                         <TextBox x:Name="NameInput" Height="30" Background="#F5F5F5"/>
 
-                        <TextBlock Text="Address" FontWeight="Bold" Margin="0,10,0,2"/>
-                        <TextBox x:Name="AddressInput" Height="60" TextWrapping="Wrap" AcceptsReturn="True"
-                                 Background="#F5F5F5"/>
+                        <TextBlock Text="Email" FontWeight="Bold" Margin="0,10,0,2"/>
+                        <TextBox x:Name="EmailInput" Height="30" Background="#F5F5F5"/>
 
-                        <TextBlock Text="City" FontWeight="Bold" Margin="0,10,0,2"/>
-                        <TextBox x:Name="CityInput" Height="30" Background="#F5F5F5"/>
-
-                        <TextBlock Text="Post Code" FontWeight="Bold" Margin="0,10,0,2"/>
-                        <TextBox x:Name="PostCodeInput" Height="30" Background="#F5F5F5"/>
-
-                        <TextBlock Text="Country" FontWeight="Bold" Margin="0,10,0,2"/>
-                        <TextBox x:Name="CountryInput" Height="30" Background="#F5F5F5"/>
-
-                        <!-- Save Button -->
-                        <Button Content="Save" Width="80" Height="30" Margin="0,20,0,0" HorizontalAlignment="Left"
+                        <Button Content="Save" Width="80" Height="26" Margin="0,20,0,0" HorizontalAlignment="Center"
                                 Background="#D98A50" Foreground="White" FontWeight="Bold"
-                                Click="SaveButton_Click"/>
-                        
+                                 Click="SaveButton_Click" RenderTransformOrigin="0.43,-1.65"/>
+
+                        <Button Content="Back" Width="80" Height="26" Margin="0,20,0,0" HorizontalAlignment="Right"
+                                Background="#D98A50" Foreground="White" FontWeight="Bold"
+                                 Click="BackButton_Click" RenderTransformOrigin="0.43,-1.65"/>
+
                     </StackPanel>
                 </Grid>
             </Grid>

@@ -39,6 +39,7 @@ namespace pawdoc
                 }
                 catch (Exception ex)
                 {
+                    MessageBox.Show("Failed to get user");
                 }
             }
             else

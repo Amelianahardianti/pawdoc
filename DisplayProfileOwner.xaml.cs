@@ -40,7 +40,7 @@ namespace pawdoc
         private void PetDiaryButton_Click(object sender, RoutedEventArgs e)
         {
             // Navigasi kembali ke halaman Pet Diary
-            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new DisplayDiaryPage());
+            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new PetDiary());
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {

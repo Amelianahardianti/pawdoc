@@ -11,6 +11,7 @@
   <ItemGroup>
     <None Remove="appsettings.json" />
     <None Remove="Assets\anjingkucing.svg" />
+    <None Remove="Assets\clinic.png" />
     <None Remove="Assets\doc1.png" />
     <None Remove="Assets\doc2.png" />
     <None Remove="Assets\doc3.png" />
@@ -21,6 +22,7 @@
     <None Remove="Assets\Group 50.png" />
     <None Remove="Assets\Group 53.png" />
     <None Remove="Assets\Group 54.png" />
+    <None Remove="Assets\notes.png" />
     <None Remove="Assets\owner.png" />
     <None Remove="Assets\pawdoc-12345-firebase-adminsdk-u5zgj-2ae4b4ce7c.json" />
     <None Remove="Assets\User Profile Circle.png" />
@@ -38,6 +40,9 @@
     <Content Include="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\clinic.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\doc1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -51,6 +56,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\google.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\notes.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\pawdoc-12345-firebase-adminsdk-u5zgj-2ae4b4ce7c.json">
@@ -88,10 +96,6 @@
 
   <ItemGroup>
     <Resource Include="Assets\facebook.svg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="component\" />
   </ItemGroup>
 
 </Project>
