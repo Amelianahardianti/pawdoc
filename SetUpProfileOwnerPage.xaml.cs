@@ -29,11 +29,12 @@ namespace pawdoc
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             // Navigasi kembali ke halaman sebelumnya
-            NavigationService.GoBack();
+            this.NavigationService.Navigate(new DashboardPage(((selo)Application.Current.MainWindow).user));
+
         }
 
         // Event handler for adding a profile image
- 
+
 
         // Event handler for saving data to Firebase
         private async void SaveButton_Click(object sender, RoutedEventArgs e)

@@ -1,43 +1,31 @@
 ﻿<Page x:Class="pawdoc.VetListPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:local="clr-namespace:pawdoc" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
       Title="VetListPage" Height="450" Width="800">
 
-    <Grid Background="#FFF5F5F5">
-
+    <Grid Background="White">
         <!-- Sidebar -->
         <Grid Background="#FFFEEFD5" Width="200" HorizontalAlignment="Left">
             <StackPanel VerticalAlignment="Top" Margin="20,50,0,0">
-                <!-- Logo as Button -->
-                <Button Content="PawDoc"
-                        FontSize="24" 
-                        FontWeight="Bold" 
-                        Foreground="#FEC78F" 
-                        Background="Transparent" 
-                        BorderBrush="Transparent" 
-                        HorizontalAlignment="Left"
-                        Click="PawDocButton_Click"/>
+                <TextBlock Text="PawDoc" FontSize="24" FontWeight="Bold" Foreground="#FEC78F" HorizontalAlignment="Left"/>
                 <TextBlock Text="Your Pet's Best Friend" FontSize="12" Foreground="#CBA15E" Margin="0,5,0,20"/>
-
-                <!-- Navigation Menu -->
-                <StackPanel>
-                    <Button Content="Vet List" FontSize="14" Foreground="#F2994A" FontWeight="Bold" 
-                            Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" 
-                            Click="VetListButton_Click"/>
-                    <Button Content="Pet Diary" FontSize="14" Foreground="#F2994A" FontWeight="Bold" 
-                            Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" 
-                            Click="PetDiaryButton_Click"/>
-                    <Button Content="Profile" FontSize="14" Foreground="#F2994A" FontWeight="Bold" 
-                            Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" 
-                            Click="ProfileButton_Click"/>
-                </StackPanel>
+                <Button Content="Clinic Information" FontSize="14" Foreground="#F2994A" FontWeight="Bold" Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" Click="ClinicButton_Click"/>
+                <Button Content="Vet List" FontSize="14" Foreground="#F2994A" FontWeight="Bold" Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" Click="VetListButton_Click"/>
+                <Button Content="Input Diary" FontSize="14" Foreground="#F2994A" FontWeight="Bold" Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" Click="InputDiaryButton_Click"/>
+                <Button Content="Pet Diary" FontSize="14" Foreground="#F2994A" FontWeight="Bold" Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" Click="PetDiary_Click"/>
+                <Button Content="Profile" FontSize="14" Foreground="#F2994A" FontWeight="Bold" Background="Transparent" BorderBrush="Transparent" Margin="0,10,0,0" Click="ProfileButton_Click"/>
+                <Button Content="Back" Background="#FEC78F" Foreground="White" BorderBrush="Transparent" Width="100" Height="35" Margin="0,20,0,0" Click="BackButton_Click"/>
             </StackPanel>
         </Grid>
 
         <!-- Vet List -->
-        <Grid Margin="220,50,20,50">
-            <UniformGrid Columns="2" Rows="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,20">
+        <Grid Margin="220,85,20,15">
+            <!-- Header -->
+            <TextBlock Text="Pet Diary Database" FontSize="24" Foreground="#ED9455" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,-56,0,76"/>
+            <UniformGrid Columns="2" Rows="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,-6,0,0">
                 <!-- Vet 1 -->
                 <Border Background="White" CornerRadius="10" Padding="10" Margin="10"
                         BorderBrush="#FFC6C6C6" BorderThickness="1">
@@ -49,9 +37,9 @@
                         </Ellipse>
                         <StackPanel>
                             <TextBlock Text="drh. Baskoro, Sp. BdRh." FontWeight="Bold" FontSize="14" Foreground="#333333" />
-                            <TextBlock Text="Ahli Bedah" FontSize="12" Foreground="#777777" />
+                            <TextBlock Text="Spesialis Anestesiologi" FontSize="12" Foreground="#777777" />
                             <TextBlock Text="PDHI-12345/XYT/2024" FontSize="12" Foreground="#777777" />
-                            <TextBlock Text="Jakarta" FontSize="12" Foreground="#777777" />
+                            <TextBlock Text="Senin-Jumat 10.00 - 12.00" FontSize="12" Foreground="#777777" />
                         </StackPanel>
                     </StackPanel>
                 </Border>
@@ -110,10 +98,6 @@
                     </StackPanel>
                 </Border>
             </UniformGrid>
-            <!-- Back Button -->
-            <Button Content="Back" Width="80" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,20"
-                    Background="#FEC78F" Foreground="White" BorderBrush="Transparent" Click="BackButton_Click"/>
         </Grid>
     </Grid>
 </Page>
-

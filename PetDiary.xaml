@@ -3,7 +3,6 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:component="clr-namespace:pawdoc.component"
       mc:Ignorable="d" 
       Title="PetDiary" Height="450" Width="800">
 
@@ -22,17 +21,17 @@
             </StackPanel>
         </Grid>
 
-        <!-- Main Content -->
-        <ScrollViewer Margin="223,20,20,20" x:Name="DiaryScroll">
-            <StackPanel>
-                <!-- Header -->
-                <TextBlock Text="Pet Diary Database" FontSize="24" Foreground="#ED9455" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10"/>
+        <TextBlock Text="Pet Diary Database" FontSize="24" Foreground="#ED9455" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10"/>
 
-                <!-- Pet Info Sections -->
-                <StackPanel x:Name="StackPanelDiary">
-                    
-                </StackPanel>
+        <!-- Main Content -->
+        <ScrollViewer Margin="223,20,20,20">
+                <!-- Header -->
+
+            <StackPanel x:Name="StackPanelDiary">
+                
             </StackPanel>
+                
+            
         </ScrollViewer>
     </Grid>
 </Page>

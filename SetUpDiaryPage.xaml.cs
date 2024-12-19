@@ -30,28 +30,40 @@ namespace pawdoc
         }
 
         // Navigation Button Click Handler
-        private void PawDocButton_Click(object sender, RoutedEventArgs e)
+        private void ClinicButton_Click(object sender, RoutedEventArgs e)
         {
-            // Navigasi kembali ke halaman Dashboard
-            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new DashboardPage());
+            this.NavigationService.Navigate(new ClinicPage());
         }
 
+        // Navigate to VetListPage
         private void VetListButton_Click(object sender, RoutedEventArgs e)
         {
-            // Navigasi kembali ke halaman Vet List
-            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new VetListPage());
-        }
-        private void PetDiaryButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Navigasi kembali ke halaman Pet Diary
-            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new SetUpDiaryPage());
+            this.NavigationService.Navigate(new VetListPage());
         }
 
-        //error dikit bro di xamlnya jadi gw bikinin ini dulu 
+        // Navigate to SetUpDiaryPage
+        private void InputDiaryButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new SetUpDiaryPage());
+        }
+
+        // Navigate to PetDiary page
+        private void PetDiary_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new PetDiary());
+        }
+
+        // Navigate to SetUpProfileOwnerPage
         private void ProfileButton_Click(object sender, RoutedEventArgs e)
         {
-            // Navigasi ke halaman Display Pet Diary 
-            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new DisplayProfileOwner());
+            this.NavigationService.Navigate(new SetUpProfileOwnerPage());
+        }
+
+        // Navigate to Dashboard
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new DashboardPage(((selo)Application.Current.MainWindow).user));
+
         }
         // [DIBIKIN BISA OTOMATIS BIKIN PROFILE (SetUpProfileOwnerPage)OR LIHAT PROFILE (DisplayProfileOwnerPage)]
 
@@ -94,11 +106,6 @@ namespace pawdoc
         //        MessageBox.Show($"An error occurred while checking the user profile: {ex.Message}");
         //    }
         //}
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Navigasi kembali ke halaman sebelumnya
-            ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new DashboardPage());
-        }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {

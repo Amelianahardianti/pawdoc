@@ -34,7 +34,7 @@ namespace pawdoc
                 try
                 {
                     ((selo)Application.Current.MainWindow).user = await FirestoreService.GetUserFromFirestoreAsync(email);
-                    ((selo)Application.Current.MainWindow).ContentFrame.Navigate(new DashboardPage(((selo)Application.Current.MainWindow).user));
+                    this.NavigationService.Navigate(new DashboardPage(((selo)Application.Current.MainWindow).user) );
 
                 }
                 catch (Exception ex)

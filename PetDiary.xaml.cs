@@ -44,7 +44,7 @@ namespace pawdoc
             this.NavigationService.Navigate(new VetListPage());
         }
 
-        // Navigate to SetUpDiaryPage
+        // Navigate to InputDiary
         private void InputDiaryButton_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new SetUpDiaryPage());
@@ -67,5 +67,6 @@ namespace pawdoc
         {
             this.NavigationService.Navigate(new DashboardPage(((selo)Application.Current.MainWindow).user));
         }
+
     }
 }

@@ -1,23 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace pawdoc
 {
-    /// <summary>
-    /// Interaction logic for ClinicPage.xaml
-    /// </summary>
     public partial class ClinicPage : Page
     {
         public ClinicPage()
@@ -25,27 +10,40 @@ namespace pawdoc
             InitializeComponent();
         }
 
+        // Navigate to ClinicPage (this page itself)
+        private void ClinicButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new ClinicPage());
+        }
+
+        // Navigate to VetListPage
         private void VetListButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.NavigationService.Navigate(new VetListPage());
         }
 
-        private void PetDiaryButton_Click(object sender, RoutedEventArgs e)
+        // Navigate to SetUpDiaryPage
+        private void InputDiaryButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.NavigationService.Navigate(new SetUpDiaryPage());
         }
 
+        // Navigate to PetDiary page
+        private void PetDiary_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new PetDiary());
+        }
+
+        // Navigate to SetUpProfileOwnerPage
         private void ProfileButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.NavigationService.Navigate(new SetUpProfileOwnerPage());
         }
+
+        // Navigate to Dashboard
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void PawDocButton_Click(object sender, RoutedEventArgs e)
-        {
+            this.NavigationService.Navigate(new DashboardPage(((selo)Application.Current.MainWindow).user));
 
         }
     }
