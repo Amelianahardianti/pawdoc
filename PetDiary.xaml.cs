@@ -3,6 +3,8 @@ using pawdoc.component;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using Firebase.Database;
+using Firebase.Database.Query;
 
 namespace pawdoc
 {
@@ -32,7 +34,7 @@ namespace pawdoc
                 diaryComponent.OnDelete += async (DiaryEntry deletedEntry) =>
                 {
                     // Delete the entry from Firestore
-                    bool isDeleted = await firestoreService.DeleteDiaryEntryAsync(deletedEntry);
+                    bool isDeleted = await firestoreService.DeleteDiaryEntryAsync(deletedEntry.Id);
                     if (isDeleted)
                     {
                         // Remove the DiaryComponent from the StackPanel

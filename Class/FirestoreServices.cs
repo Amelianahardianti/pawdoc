@@ -153,6 +153,7 @@ namespace pawdoc
                     if (document.Exists)
                     {
                         DiaryEntry entry = document.ConvertTo<DiaryEntry>();
+                        entry.Id = document.Id; // Menyimpan ID dokumen ke dalam objek DiaryEntry
                         diaryEntries.Add(entry);
                     }
                 }
@@ -166,28 +167,25 @@ namespace pawdoc
             }
         }
 
-        // Method to delete a diary entry from Firestore
-        public async Task<bool> DeleteDiaryEntryAsync(DiaryEntry diaryEntry)
+        public async Task<bool> DeleteDiaryEntryAsync(string diaryId)
         {
             try
             {
-                // Construct the document ID to match how it was saved
-                string documentId = $"{diaryEntry.Username}_{diaryEntry.DateCreated}";
+                // Referensi ke dokumen yang ingin dihapus berdasarkan ID
+                DocumentReference docRef = _firestoreDb.Collection("diary").Document(diaryId);
 
-                // Reference the document in Firestore
-                DocumentReference docRef = _firestoreDb.Collection("diary").Document(documentId);
-
-                // Delete the document
+                // Eksekusi penghapusan dokumen
                 await docRef.DeleteAsync();
 
-                Console.WriteLine($"Diary entry {documentId} successfully deleted from Firestore.");
+                Console.WriteLine($"Diary entry with ID {diaryId} deleted successfully.");
                 return true;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Failed to delete entry from Firestore: {ex.Message}");
+                Console.WriteLine($"Error deleting diary entry: {ex.Message}");
                 return false;
             }
         }
+
     }
 }

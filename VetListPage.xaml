@@ -54,10 +54,10 @@
                             </Ellipse.Fill>
                         </Ellipse>
                         <StackPanel>
-                            <TextBlock Text="drh. OHYA, Sp. BdRh." FontWeight="Bold" FontSize="14" Foreground="#333333" />
-                            <TextBlock Text="Ahli Bedah" FontSize="12" Foreground="#777777" />
+                            <TextBlock Text="drh. OHYA, Sp.OfRh." FontWeight="Bold" FontSize="14" Foreground="#333333" />
+                            <TextBlock  Text="Spesialis Oftalmologi" FontSize="12" Foreground="#777777" />
                             <TextBlock Text="PDHI-12346/XYT/2024" FontSize="12" Foreground="#777777" />
-                            <TextBlock Text="Pontianak" FontSize="12" Foreground="#777777" />
+                            <TextBlock Text="Sabtu 13.00 -16.00" FontSize="12" Foreground="#777777" />
                         </StackPanel>
                     </StackPanel>
                 </Border>
@@ -72,10 +72,10 @@
                             </Ellipse.Fill>
                         </Ellipse>
                         <StackPanel>
-                            <TextBlock Text="drh. Bambang, Sp. BdRh." FontWeight="Bold" FontSize="14" Foreground="#333333" />
-                            <TextBlock Text="Ahli Bedah" FontSize="12" Foreground="#777777" />
+                            <TextBlock Text="drh. Bambang" FontWeight="Bold" FontSize="14" Foreground="#333333" />
+                            <TextBlock Text="Dokter hewan umum" FontSize="12" Foreground="#777777" />
                             <TextBlock Text="PDHI-12347/XYT/2024" FontSize="12" Foreground="#777777" />
-                            <TextBlock Text="Jakarta" FontSize="12" Foreground="#777777" />
+                            <TextBlock Text="Senin-Jumat 13.00 - 16.00" FontSize="12" Foreground="#777777" />
                         </StackPanel>
                     </StackPanel>
                 </Border>
@@ -93,7 +93,7 @@
                             <TextBlock Text="drh. Mingyu, Sp. BdRh." FontWeight="Bold" FontSize="14" Foreground="#333333" />
                             <TextBlock Text="Ahli Bedah" FontSize="12" Foreground="#777777" />
                             <TextBlock Text="PDHI-12348/XYT/2024" FontSize="12" Foreground="#777777" />
-                            <TextBlock Text="Pontianak" FontSize="12" Foreground="#777777" />
+                            <TextBlock Text="Sabtu 10.00 - 12.00 " FontSize="12" Foreground="#777777" />
                         </StackPanel>
                     </StackPanel>
                 </Border>
