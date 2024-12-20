@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace pawdoc
+namespace pawdoc.Class
 {
     public class FirebaseAuthHelper
     {
