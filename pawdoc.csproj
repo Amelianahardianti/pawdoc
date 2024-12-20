@@ -98,8 +98,10 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.0" />
     <PackageReference Include="MVVMEssentials.WPF" Version="1.0.3" />
+    <PackageReference Include="Pawdoc.UIComponent" Version="1.0.0" />
     <PackageReference Include="SharpVectors" Version="1.8.4.2" />
     <PackageReference Include="Svg2Xaml" Version="0.3.0.7" />
+	<PackageReference Include="Pawdoc.UIComponent" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>

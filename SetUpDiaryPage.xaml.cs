@@ -1,5 +1,6 @@
 ﻿using Google.Cloud.Firestore;
-using pawdoc.Class;
+using Pawdoc.UIComponent;
+using Pawdoc.UIComponents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -125,7 +126,7 @@ namespace pawdoc
                     Medicine = medicine,
                     ExtraNote = extraNote,
                     DateCreated = Timestamp.GetCurrentTimestamp(),
-                    Id = "1",
+                    Id = PetIDTextBox.Text,
                 };
                 _firestoreService.AddDiaryEntryAsync(diaryEntry);
 

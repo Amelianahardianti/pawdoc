@@ -1,10 +1,10 @@
-﻿using pawdoc.Class;
-using pawdoc.component;
+﻿using Pawdoc.UIComponent;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using Firebase.Database;
 using Firebase.Database.Query;
+using Pawdoc.UIComponents;
 
 namespace pawdoc
 {
@@ -29,7 +29,7 @@ namespace pawdoc
             foreach (DiaryEntry entry in entries)
             {
                 var diaryComponent = new DiaryComponent(entry);
-
+               
                 // Subscribe to the delete event from the DiaryComponent
                 diaryComponent.OnDelete += async (DiaryEntry deletedEntry) =>
                 {

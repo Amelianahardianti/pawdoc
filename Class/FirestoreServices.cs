@@ -1,10 +1,13 @@
 ﻿using Firebase.Auth;
 using Google.Cloud.Firestore;
-using pawdoc.Class;
+using Pawdoc;
+using Pawdoc.UIComponents;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
+
+
 
 namespace pawdoc
 {
@@ -153,7 +156,6 @@ namespace pawdoc
                     if (document.Exists)
                     {
                         DiaryEntry entry = document.ConvertTo<DiaryEntry>();
-                        entry.Id = document.Id; // Menyimpan ID dokumen ke dalam objek DiaryEntry
                         diaryEntries.Add(entry);
                     }
                 }
